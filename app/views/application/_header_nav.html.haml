@@ -1,0 +1,29 @@
+%nav.top-bar
+  %ul.title-area
+    / Title Area
+    %li.name
+      %h1
+        =link_to 'Artistic Streets', root_path
+    / Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone
+    %li.toggle-topbar.menu-icon
+      %a{:href => "#"}
+        %span Menu
+  %section.top-bar-section
+    / Right Nav Section
+    %ul.right
+      %li.divider
+      %li
+        %a{:href => "/discover"} Discover
+      %li.divider
+      %li
+        %a{:href => "/contribute"} Contribute
+      %li.divider
+    / %ul.right
+    /   %li.divider
+    /   %li.has-form
+    /     %form
+    /       .row.collapse
+    /         .small-8.columns
+    /           %input{:type => "text"}/
+    /         .small-4.columns
+    /           %a.alert.button{:href => "#"} Search
