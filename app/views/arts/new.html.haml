@@ -1,0 +1,17 @@
+%h1 #{t('headings.contribute_to_the_doc')}
+.row
+  .small-11.large-centered.columns
+    = form_for @art do |f|
+      .control-group
+        = f.text_field :title, id: "#", placeholder:"Title of Art (if known)"
+      .control-group
+        = f.text_field :artist, id: "#", placeholder:"Artist (if known)"
+      .control-group
+        =f.text_area :comment, id: "#", placeholder: "comments"
+
+      =f.fields_for :location do |p|
+        .controle-group
+          =p.text_field :address, id: "#", placeholder: "address"
+
+      =submit_tag "sumbit"
+

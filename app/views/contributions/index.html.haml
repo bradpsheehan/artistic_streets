@@ -1,20 +1,19 @@
-%h1
-  Contribute to the Documentary
+%h1 #{t('headings.contribute_to_the_doc')}
 .row
   .large-.larg-centered.columns
-    = form_tag('/') do
+    = form_for(:art) do |f|
       .control-group
-        = text_field_tag "name", nil, id: "#", placeholder:"Your Name"
+        = f.text_field :name, id: "#", placeholder:"Your Name"
       .control-group
-        = text_field_tag "email", nil, id: "#", placeholder:"youremail@example.com"
+        = f.text_field :email, id: "#", placeholder:"youremail@example.com"
       .control-group
-        = text_field_tag "title", nil, id: "#", placeholder:"Title of Art (if known)"
+        = f.text_field :title, id: "#", placeholder:"Title of Art (if known)"
       .control-group
-        = text_field_tag "location", nil, id: "#", placeholder:"google maps link or address"
+        = f.text_field :location, id: "#", placeholder:"address"
       .control-group
-        = text_field_tag "image", nil, id: "#", placeholder:"photo of art"
+        = f.text_field :image, id: "#", placeholder:"photo of art"
       .control-group
-        =text_area_tag "comments", nil, id: "#", placeholder: "comments"
+        =f.text_area :comment, id: "#", placeholder: "comments"
 
       =submit_tag "sumbit"
 
