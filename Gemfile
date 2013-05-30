@@ -14,6 +14,7 @@ gem 'jquery-rails'
 gem 'resque', "~> 1.22.0"
 gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'redis'
+gem 'geocoder'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
@@ -34,4 +35,5 @@ group :test, :development do
   gem 'vcr'
   gem 'better_errors'
   gem 'simplecov'
+  gem 'binding_of_caller'
 end
