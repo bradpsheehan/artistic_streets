@@ -1,8 +1,47 @@
 %h1
   Discover Art
 
+/ .row
+/   %iframe{:src => "http://maps.google.com/maps/ms?msa=0&msid=201942862708368620008.0004d258890eb0d4d37c6&ie=UTF8&t=m&ll=42.367676,-71.119823&spn=0.076098,0.154495&z=13&output=embed&w=1000&h=600", class: "small-11 large-centered columns map-lrg"}
+
 .row
-  %iframe{:src => "http://maps.google.com/maps/ms?msa=0&msid=201942862708368620008.0004d258890eb0d4d37c6&ie=UTF8&t=m&ll=42.367676,-71.119823&spn=0.076098,0.154495&z=13&output=embed&w=1000&h=600", class: "small-11 large-centered columns map-lrg"}
+  .small-11.large-centered.columns
+    #map_canvas
+
+:javascript
+
+  $(function() {
+
+    var map;
+    function initialize() {
+
+      var artObjects = #{art_objects_to_js_objects(@arts)};
+
+      var myLatlng = new google.maps.LatLng(42.3583, -71.0603)
+
+      var mapOptions = {
+        zoom: 13,
+        center: myLatlng,
+        mapTypeId: google.maps.MapTypeId.ROADMAP
+      };
+
+      var map = new google.maps.Map(document.getElementById('map_canvas'),
+          mapOptions);
+
+    for (var i = 0; i < artObjects.length; i++) {
+      var art = artObjects[i];
+      var marker = new google.maps.Marker({
+           position: new google.maps.LatLng(art.lat, art.long),
+           map: map,
+           title: art.title
+       });
+    }
+
+    }
+    google.maps.event.addDomListener(window, 'load', initialize);
+
+  });
+
 
 %ul
   -@arts.each do |art|

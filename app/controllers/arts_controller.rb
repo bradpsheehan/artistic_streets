@@ -5,7 +5,8 @@ class ArtsController < ApplicationController
   end
 
   def show
-    @art = Art.find(params[:id])
+    @art = Art.includes(:location).find(params[:id])
+    @location = @art.location
   end
 
   def new
@@ -17,8 +18,8 @@ class ArtsController < ApplicationController
     @art = Art.new(params[:art])
 
     if @art.save
+      flash.notice = "Thank you for contributing!"
       redirect_to arts_path
-      # notice: "Thank you for contributing!"
     else
       render 'new'
     end

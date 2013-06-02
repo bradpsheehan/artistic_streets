@@ -36,4 +36,5 @@ group :test, :development do
   gem 'better_errors'
   gem 'simplecov'
   gem 'binding_of_caller'
+  gem 'launchy'
 end
