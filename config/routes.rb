@@ -5,6 +5,4 @@ ArtisticStreets::Application.routes.draw do
   get '/discover', to: 'arts#index'
   resources :arts
 
-  get '/contribute', to: 'contributions#index'
-
 end

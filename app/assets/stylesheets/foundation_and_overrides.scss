@@ -1010,3 +1010,8 @@
 
 
 @import 'foundation';
+.alert-box {
+  @include alert-base;
+  @include alert-style;
+  .close { @include alert-close; }
+}
