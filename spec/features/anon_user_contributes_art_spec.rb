@@ -4,7 +4,7 @@ describe "user can contribute art to the documentary" do
   it "can navigate to the contribution page" do
     visit root_path
     click_link 'Contribute'
-    expect( page ).to have_selector('#new-art')
+    expect( page ).to have_selector('#art_title')
   end
 
   it "can contribute to the documentary of public art" do
@@ -16,5 +16,9 @@ describe "user can contribute art to the documentary" do
     click_on "submit"
     expect( current_path ).should eq arts_path
   end
+
+  it "can attach an image to the art contribution form"
+
+  it 
 
 end

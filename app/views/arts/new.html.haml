@@ -1,17 +1,20 @@
 %h1 #{t('headings.contribute_to_the_doc')}
 .row
   .small-11.large-centered.columns
-    = form_for @art do |f|
+    = form_for(@art, html: {multipart: true}) do |f|
       .control-group
-        = f.text_field :title, id: "new-art", placeholder:"Title of Art (if known)"
+        = f.text_field :title, placeholder:"Title of Art (if known)"
       .control-group
-        = f.text_field :artist, id: "new-art", placeholder:"Artist (if known)"
+        = f.text_field :artist, placeholder:"Artist (if known)"
       .control-group
-        =f.text_area :comment, id: "new-art", placeholder: "comments"
+        =f.text_area :comment, placeholder: "comments"
 
       =f.fields_for :location do |p|
         .control-group
-          =p.text_field :address, id: "new-art", placeholder: "address"
-
-      =f.submit "sumbit"
+          =p.text_field :address, placeholder: "address"
+      = f.label :image, "Attach an Image"
+      = f.file_field :image
+      %br/
+      %br/
+      =f.submit "submit"
 
