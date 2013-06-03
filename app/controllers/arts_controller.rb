@@ -27,6 +27,9 @@ class ArtsController < ApplicationController
 
   def instagram_art
     raise params.inspect
+    # get object id from the request and the time from the request
+    # request from the instagram api for the object id and since this time
+    # store new images
   end
 
   def verify_instagram_art
