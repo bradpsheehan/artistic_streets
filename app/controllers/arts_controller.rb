@@ -31,7 +31,7 @@ class ArtsController < ApplicationController
 
   def verify_instagram_art
     puts params
-    return params[:'hub.challenge']
+    render text: params[:'hub.challenge']
   end
 
 end
