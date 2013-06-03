@@ -4,7 +4,6 @@ gem 'rails', '3.2.13'
 
 gem 'jquery-rails'
 gem 'pg'
-gem 'sqlite3'
 gem 'haml'
 gem 'haml-rails'
 gem 'simple_form'
