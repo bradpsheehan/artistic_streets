@@ -29,5 +29,9 @@ class ArtsController < ApplicationController
     raise params.inspect
   end
 
+  def verify_instagram_art
+    puts params
+    return params[:'hub.challenge']
+  end
 
 end
