@@ -25,5 +25,9 @@ class ArtsController < ApplicationController
     end
   end
 
+  def instagram_art
+    raise params.inspect
+  end
+
 
 end

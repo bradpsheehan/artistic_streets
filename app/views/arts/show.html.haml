@@ -4,6 +4,15 @@
 .row
   .small-11.large-centered.columns
     #map_canvas
+.row
+  .small-11.large-centered.columns
+    %h1
+      =@art.title
+    %h1
+      Artist:
+      =@art.artist
+
+    =image_tag @art.image.url
 
 :javascript
   $(function() {

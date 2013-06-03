@@ -5,4 +5,6 @@ ArtisticStreets::Application.routes.draw do
   get '/discover', to: 'arts#index'
   resources :arts
 
+  post '/art/instagram', to: 'arts#instagram_art'
+
 end
