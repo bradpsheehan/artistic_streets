@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130602192603) do
+ActiveRecord::Schema.define(:version => 20130604194742) do
 
   create_table "arts", :force => true do |t|
     t.string   "title"
@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(:version => 20130602192603) do
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.string   "art_id"
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+    t.integer  "art_id",     :limit => 255
   end
 
 end
