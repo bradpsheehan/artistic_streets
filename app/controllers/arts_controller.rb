@@ -1,6 +1,12 @@
 class ArtsController < ApplicationController
 
   def index
+    if params[:new_art]
+      @art = Art.find(params[:new_art])
+      @center_point = { lat: @art.location.latitude, long: @art.location.longitude }
+    else
+      @center_point = { lat: 42.3583, long: -71.0603 }
+    end
     @arts = Art.all
   end
 
@@ -19,7 +25,7 @@ class ArtsController < ApplicationController
 
     if @art.save
       flash.notice = "Thank you for contributing!"
-      redirect_to arts_path
+      redirect_to arts_path(new_art: @art.id)
     else
       render 'new'
     end

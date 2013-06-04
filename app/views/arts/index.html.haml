@@ -14,7 +14,7 @@
 
     var artObjects = #{art_objects(@arts).to_json};
 
-    var myLatlng = new google.maps.LatLng(42.3583, -71.0603)
+    var myLatlng = new google.maps.LatLng(#{@center_point[:lat]}, #{@center_point[:long]})
 
     var mapOptions = {
       zoom: 13,
@@ -34,12 +34,14 @@
            title: art.title
        });
 
+       marker.contentString = #{info_windows_for_arts(@arts)}[i]
+
       var infowindow = new google.maps.InfoWindow({
-          content: #{info_window_for_art(@arts)}[i]
       });
 
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.open(map, marker);
+        infowindow.setContent(this.contentString);
+        infowindow.open(map, this);
       });
     }
   }

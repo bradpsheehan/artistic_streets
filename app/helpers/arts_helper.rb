@@ -1,11 +1,7 @@
 module ArtsHelper
 
-  def art_with_valid_location(arts)
-    arts.find_all{|art| art.location.latitude && art.location.longitude }
-  end
-
   def art_objects(arts)
-    @art_objects ||= art_with_valid_location(arts).map do |art|
+    @art_objects ||= arts.map do |art|
       { title: art.title,
         lat: art.location.latitude,
         long: art.location.longitude,
@@ -15,20 +11,24 @@ module ArtsHelper
     end
   end
 
-  def info_window_for_art(arts)
-    @info_windows ||= art_objects(arts).map do |art|
+  def info_windows_for_arts(arts)
+    @info_windows ||= arts.map do |art|
+      info_window_content(art)
+    end
+  end
+
+  def info_window_content(art)
 <<-eos
 <div id="content"></div>
 <div id="siteNotice">
 </div>
-<h1 id="firstHeading" class="firstHeading">#{art[:title]}</h1>
-<h3 id="secondHeading" class="secondHeading">#{art[:artist]}</h3>
+<h1 id="firstHeading" class="firstHeading">#{art.title}</h1>
+<h3 id="secondHeading" class="secondHeading">#{art.artist}</h3>
 <div id="bodyContent">
-<img src="#{art[:image]}">
+<img src="#{art.image.url}">
 </div>
 </div>
 eos
-    end
   end
 
 end
