@@ -4,7 +4,7 @@ class Art < ActiveRecord::Base
   has_one :location
   validates_associated :location
   accepts_nested_attributes_for :location
-
+  
   has_attached_file :image
   validates :location, presence: true
 

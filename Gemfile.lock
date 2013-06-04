@@ -122,7 +122,7 @@ GEM
     multi_json (1.7.4)
     multipart-post (1.2.0)
     nokogiri (1.5.9)
-    paperclip (3.4.1)
+    paperclip (3.4.2)
       activemodel (>= 3.0.0)
       activerecord (>= 3.0.0)
       activesupport (>= 3.0.0)
@@ -260,7 +260,7 @@ DEPENDENCIES
   instagram
   jquery-rails
   launchy
-  paperclip
+  paperclip (~> 3.4.2)
   pg
   rails (= 3.2.13)
   rb-fsevent
