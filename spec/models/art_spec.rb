@@ -9,6 +9,7 @@ describe Art do
     expect { subject.location = nil }.to change { subject.valid? }.to be_false
   end
 
+  
   it "returns a hash of attributes for map info window" do
     
   end

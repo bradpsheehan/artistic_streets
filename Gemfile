@@ -15,6 +15,7 @@ gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'redis'
 gem 'geocoder'
 gem 'paperclip'
+gem 'aws-sdk'
 gem 'instagram'
 
 group :assets do
