@@ -15,6 +15,7 @@ gem 'resque-scheduler', :require => 'resque_scheduler'
 gem 'redis'
 gem 'geocoder'
 gem 'paperclip'
+gem 'instagram'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
