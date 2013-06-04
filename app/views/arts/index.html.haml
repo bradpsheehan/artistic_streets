@@ -1,18 +1,48 @@
 %h1
   Discover Art
 
-/ .row
-/   %iframe{:src => "http://maps.google.com/maps/ms?msa=0&msid=201942862708368620008.0004d258890eb0d4d37c6&ie=UTF8&t=m&ll=42.367676,-71.119823&spn=0.076098,0.154495&z=13&output=embed&w=1000&h=600", class: "small-11 large-centered columns map-lrg"}
-
 .row
   .small-11.large-centered.columns
+    %div.geocode
+      = text_field_tag 'location', nil, placeholder: "Enter a location, e.g 'Denver, Colorado'", id: "address"
+      = link_to "Go!", "#", id: "go-to-address", class: "btn"
+    %br/
     #map_canvas
 
 :javascript
+  $('#go-to-address').click(function() {
+
+  var address = $('#address').val();
+
+  centerMap(address);
+
+  return false;
+
+  });
+
+
+:javascript
   var map;
+  var geocoder;
+
+  function centerMap() {
+    var address = document.getElementById("address").value;
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+      }
+      else {
+        alert("Geocode was not successful for the following reason: " + status);
+      }
+    });
+  }
+
   function initialize() {
 
     var artObjects = #{art_objects(@arts).to_json};
+
+    geocoder = new google.maps.Geocoder();
+
 
     var myLatlng = new google.maps.LatLng(#{@center_point[:lat]}, #{@center_point[:long]})
 
@@ -22,7 +52,7 @@
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
 
-    var map = new google.maps.Map(document.getElementById('map_canvas'),
+    map = new google.maps.Map(document.getElementById('map_canvas'),
         mapOptions);
 
     for (var i = 0; i < artObjects.length; i++) {
@@ -48,9 +78,9 @@
 
   google.maps.event.addDomListener(window, 'load', initialize);
 
-/ %ul
-/   -@arts.each do |art|
-/     %li
-/       =link_to art.title, art_path(art.id)
-/     %li
-/       = image_tag art.image.url
+// %ul
+//   -@arts.each do |art|
+//     %li
+//       =link_to art.title, art_path(art.id)
+//     %li
+//       = image_tag art.image.url
