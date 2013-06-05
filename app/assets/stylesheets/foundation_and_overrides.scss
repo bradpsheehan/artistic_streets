@@ -235,7 +235,7 @@
 // $input-error-message-font-color-alt: #333;
 
 // We use these to build padding for buttons.
-// $button-med: emCalc(12px);
+ $button-med: emCalc(12px);
 // $button-tny: emCalc(7px);
 // $button-sml: emCalc(9px);
 // $button-lrg: emCalc(16px);
@@ -264,7 +264,7 @@
 // $button-border-color: darken($primary-color, $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
-// $button-radius: $global-radius;
+$button-radius: 20px;
 
 // We use this to set default opacity for disabled buttons.
 // $button-disabled-opacity: 0.6;
@@ -1009,10 +1009,73 @@
 // $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
 
 
+$padding: $button-med;
+
+$margin-right: 5px;
+
+$bg: $primary-color;
+
+$full-width: false;
+
+$disabled: false;
+
+$is-input: false;
+
+
 @import 'foundation';
 .alert-box {
   @include alert-base;
   @include alert-style;
   .close { @include alert-close; }
+}
+h1 {
+  text-align:center;
+  text-transform: uppercase;
+  font-size: 1.8em;
+  font-weight: bold;
+}
+h3 {
+  text-align: center
+}
+.map-lrg {
+  height: 600px !important;
+  width: 1000px !important;
+}
+#map_canvas {
+  height: 600px;
+  width: 100%;
+}
+#wrap {
+  min-height: 100%;
+}
+#main {
+  overflow:auto;
+  padding-bottom: 150px;
+}
+#footer {
+  position: relative;
+  margin-top: 2%; /* negative value of footer height */
+  height: 150px;
+  clear:both;
+  background-color: black;
+}
+.custom-button {
+  @include button($padding, $bg, $button-radius, $full-width, $disabled, $is-input, $margin-right );
+}
+#landing-hero {
+  background: url('artistic_streets_hero_map_2.png')no-repeat top center;
+  background-size: 80%;
+  height: 600px;
+  color: white;
+}
+.pull-left {
+  float: left;
+}
+.pull-right {
+  float: right;
+}
+#inline-list {
+  display: inline;
+  list-style-type: none;
 }
 
