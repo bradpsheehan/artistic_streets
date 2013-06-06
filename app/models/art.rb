@@ -9,16 +9,4 @@ class Art < ActiveRecord::Base
 
   validates :location, presence: true
 
-  def to_map_art
-    {
-      artist: artist,
-      title: title,
-      lat: location.latitude,
-      long: location.longitude,
-      image: image.url,
-    }
-  end
-
-
-
 end

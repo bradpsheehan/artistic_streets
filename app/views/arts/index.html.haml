@@ -1,10 +1,10 @@
 %h1
-  Discover Art
+  #{t('headings.discover_art')}
 
 .row
   .small-11.large-centered.columns
     %div.geocode
-      = text_field_tag 'location', nil, placeholder: "Enter a location, e.g 'Denver, Colorado'", id: "address"
+      = text_field_tag 'location', nil, placeholder: "#{t('placeholders.map_search')}", id: "address"
       = link_to "Go!", "#", id: "go-to-address", class: "btn"
     %br/
     #map_canvas
