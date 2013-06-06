@@ -16,3 +16,11 @@
         %li
           =link_to "#{t('nav.contribute')}", new_art_path
         %li.divider
+        %li.has-dropdown
+          %a{:href => "#"} Language
+          %ul.dropdown
+            %li
+              =link_to "English", i18n_path(locale: 'en')
+            %li
+              =link_to "Epanol", i18n_path(locale: 'es')
+

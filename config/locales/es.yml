@@ -1,19 +1,17 @@
+---
 es:
   headings:
-    contribute_to_the_doc: Contribuir al Documental
-    discover_art: Descubrir el Arte
-
+    contribute_to_the_doc: 'Contribuir al Documental'
+    discover_art: 'Descubrir el Arte'
   nav:
-    discover: Descubrir
-    contribute: Contribuir
-
+    discover: 'Descubrir'
+    contribute: 'Contribuir'
   placeholders:
-    art_title: Título de Arte (si se conoce)
-    artist_name: Artista (si se conoce)
-    comments: Comentarios
-    address: Dirección
-    image: Adjuntar una imagen
+    art_title: 'Título de Arte (si se conoce)'
+    artist_name: 'Artista (si se conoce)'
+    comments: 'Comentarios'
+    address: 'Dirección'
+    image: 'Adjuntar una imagen'
     map_search: "Buscar ubicaciones por Ciudad, Estado o Código Postal"
-
   buttons:
-    submit: presentar
+    submit: 'presentar'
