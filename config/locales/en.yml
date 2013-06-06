@@ -1,22 +1,18 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
+---
 en:
   headings:
-    contribute_to_the_doc: Contribute to the Documentary
-    discover_art: Discover Art
-
+    contribute_to_the_doc: 'Contribute to the Documentary'
+    discover_art: 'Discover Art'
+    art_title: 'Title:'
   nav:
-    discover: Discover
-    contribute: Contribute
-
+    discover: 'Discover'
+    contribute: 'Contribute'
   placeholders:
-    art_title: Title of Art (if known)
-    artist_name: Artist (if known)
-    comments: Comments
-    address: Address
-    image: Attach an Image
+    art_title: 'Title of Art (if known)'
+    artist_name: 'Artist (if known)'
+    comments: 'Comments'
+    address: 'Address'
+    image: 'Attach an Image'
     map_search: "Search Locations by City, State or Zipcode"
-
   buttons:
-    submit: submit
+    submit: 'submit'

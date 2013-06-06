@@ -17,10 +17,12 @@ module ArtsHelper
 <div id="content"></div>
 <div id="siteNotice">
 </div>
-<h4>Title:</h4>
+<h4>#{t('headings.art_tite')}</h4>
 <p id="firstHeading" class="firstHeading">#{art.title}</p>
 <h4>Artist:</h4>
 <p id="secondHeading" class="secondHeading">#{art.artist}</p>
+<h4>Location:</h4>
+<p id="secondHeading" class="secondHeading">#{art.location[:address]}</p>
 <div id="bodyContent" class="row">
 <div class="large-11 large-centered columns">
 <img src="#{art.image.url(:medium)}">
