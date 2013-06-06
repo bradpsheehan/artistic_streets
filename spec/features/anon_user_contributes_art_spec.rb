@@ -14,11 +14,7 @@ describe "user can contribute art to the documentary" do
     fill_in 'art[comment]',:with   => 'This one is hard to miss.'
     fill_in 'art[location_attributes][address]',:with => '123 Fake St Denver CO'
     click_on "submit"
-    expect( current_path ).should eq arts_path
+    expect( current_path ).to eq arts_path
   end
-
-  it "can attach an image to the art contribution form"
-
-  it 
 
 end

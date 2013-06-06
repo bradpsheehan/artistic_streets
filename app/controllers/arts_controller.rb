@@ -31,16 +31,16 @@ class ArtsController < ApplicationController
     end
   end
 
-  def instagram_art
-    raise params.inspect
-    # get object id from the request and the time from the request
-    # request from the instagram api for the object id and since this time
-    # store new images
-  end
+  # def instagram_art
+  #   raise params.inspect
+  #   # get object id from the request and the time from the request
+  #   # request from the instagram api for the object id and since this time
+  #   # store new images
+  # end
 
-  def verify_instagram_art
-    puts params
-    render text: params[:'hub.challenge']
-  end
+  # def verify_instagram_art
+  #   puts params
+  #   render text: params[:'hub.challenge']
+  # end
 
 end

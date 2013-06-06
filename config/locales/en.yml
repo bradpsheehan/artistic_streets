@@ -4,3 +4,19 @@
 en:
   headings:
     contribute_to_the_doc: Contribute to the Documentary
+    discover_art: Discover Art
+
+  nav:
+    discover: Discover
+    contribute: Contribute
+
+  placeholders:
+    art_title: Title of Art (if known)
+    artist_name: Artist (if known)
+    comments: Comments
+    address: Address
+    image: Attach an Image
+    map_search: "Search Locations by City, State or Zipcode"
+
+  buttons:
+    submit: submit
