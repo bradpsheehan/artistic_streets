@@ -5,7 +5,8 @@ class Art < ActiveRecord::Base
   validates_associated :location
   accepts_nested_attributes_for :location
 
-  has_attached_file :image
+  has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }
+
   validates :location, presence: true
 
   def to_map_art
