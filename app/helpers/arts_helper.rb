@@ -17,10 +17,14 @@ module ArtsHelper
 <div id="content"></div>
 <div id="siteNotice">
 </div>
-<h1 id="firstHeading" class="firstHeading">#{art.title}</h1>
-<h3 id="secondHeading" class="secondHeading">#{art.artist}</h3>
-<div id="bodyContent">
-<img src="#{art.image.url}">
+<h4>Title:</h4>
+<p id="firstHeading" class="firstHeading">#{art.title}</p>
+<h4>Artist:</h4>
+<p id="secondHeading" class="secondHeading">#{art.artist}</p>
+<div id="bodyContent" class="row">
+<div class="large-11 large-centered columns">
+<img src="#{art.image.url(:medium)}">
+</div>
 </div>
 </div>
 eos
