@@ -1065,9 +1065,16 @@ h3 {
 #landing-hero {
   background: url('artistic_streets_hero_map3.png')no-repeat top center;
   background-size: 80%;
-  height: 600px;
+  height: 500px;
+  margin-bottom: 2%;
   color: white;
-  font-family: yesteryear
+}
+#landing-bottom-content h2 {
+  margin-right: 20%;
+}
+#landing-bottom-content {
+   /*padding-left: 2%;*/
+   margin-left: 6%;
 }
 .pull-left {
   float: left;
