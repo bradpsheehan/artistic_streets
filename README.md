@@ -1,7 +1,7 @@
 artistic_streets
 ================
 
-## Document and Discover Public Art in Your Community and Around the World!
+## Document & Discover Public Art in your community!
 ###*a gSchool Project by Bradley Sheehan*
 
 View the live site at: http://artistic-streets.herokuapp.com
