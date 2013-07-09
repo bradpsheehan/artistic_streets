@@ -67,16 +67,22 @@
            map: map,
            title: art.title
        });
+       
+       //$(google.maps.Marker).bind('click', function(){
+         //alert('hey');
+       //});
 
        marker.contentString = #{info_windows_for_arts(@arts)}[i]
 
-      var infowindow = new google.maps.InfoWindow({
-        maxWidth: 400,
-      });
+      //var infowindow = new google.maps.InfoWindow({
+        //maxWidth: 400,
+      //});
 
       google.maps.event.addListener(marker, 'click', function() {
-        infowindow.setContent(this.contentString);
-        infowindow.open(map, this);
+        console.log(this.contentString);
+        $('.side-nav').html(this.contentString);
+        //infowindow.setContent(this.contentString);
+        //infowindow.open(map, this);
       });
     }
   }

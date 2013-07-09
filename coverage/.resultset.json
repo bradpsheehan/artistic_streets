@@ -17,8 +17,14 @@
         null,
         1,
         null,
+        null,
+        null,
+        null,
+        null,
         1,
         5,
+        null,
+        null,
         null,
         null
       ],
@@ -37,8 +43,8 @@
         null,
         1,
         null,
-        0,
-        0,
+        1,
+        1,
         null,
         null,
         1,
@@ -46,8 +52,10 @@
         null,
         null,
         null,
+        1,
         null,
-        0,
+        null,
+        null,
         null,
         null,
         null,
@@ -125,6 +133,16 @@
         null,
         1,
         null,
+        1,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
+        null,
+        null,
         null
       ],
       "/Users/BradleySheehan/Documents/projects/artistic_streets/app/controllers/locations_controller.rb": [
@@ -151,7 +169,7 @@
         null
       ]
     },
-    "timestamp": 1370530273
+    "timestamp": 1373408524
   },
   "Cucumber Features": {
     "coverage": {
