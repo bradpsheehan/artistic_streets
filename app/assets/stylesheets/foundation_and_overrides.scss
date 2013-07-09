@@ -264,7 +264,7 @@
 // $button-border-color: darken($primary-color, $button-function-factor);
 
 // We use this to set the default radius used throughout the core.
-$button-radius: 20px;
+//$button-radius: @global-radius;
 
 // We use this to set default opacity for disabled buttons.
 // $button-disabled-opacity: 0.6;
@@ -1008,14 +1008,11 @@ $button-radius: 20px;
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
 
-
 $padding: $button-med;
-
-$margin-right: 5px;
 
 $bg: $primary-color;
 
-$full-width: false;
+$full-width: true;
 
 $disabled: false;
 
@@ -1023,6 +1020,35 @@ $is-input: false;
 
 
 @import 'foundation';
+
+.custom-button {
+  @include button($padding, $bg, $button-radius, $full-width, $disabled, $is-input);
+  background-color: #2ECC71;
+}
+.custom-button-small {
+  @include button($padding, $bg, $button-radius, $disabled, $is-input);
+  background-color: #2ECC71;
+}
+.custom-button:hover {
+  background-color: #27AE60;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+.custom-button-small:hover {
+  background-color: #27AE60;
+  -webkit-transition: all 500ms ease;
+  -moz-transition: all 500ms ease;
+  -ms-transition: all 500ms ease;
+  -o-transition: all 500ms ease;
+  transition: all 500ms ease;
+}
+
+html > body {
+  background-color: #f2f2f2;
+}
 .alert-box {
   @include alert-base;
   @include alert-style;
@@ -1058,9 +1084,6 @@ h3 {
   height: 150px;
   clear:both;
   background-color: black;
-}
-.custom-button {
-  @include button($padding, $bg, $button-radius, $full-width, $disabled, $is-input, $margin-right );
 }
 #landing-hero {
   background: url('artistic_streets_hero_map3.png')no-repeat top center;

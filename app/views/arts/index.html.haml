@@ -2,11 +2,14 @@
   =t('headings.discover_art')
 
 .row
-  .small-11.large-centered.columns
-    %div.geocode
-      = text_field_tag 'location', nil, placeholder: "#{t('placeholders.map_search')}", id: "address"
-      = link_to "Go!", "#", id: "go-to-address", class: "btn"
+  .large-9.columns
+    = text_field_tag 'location', nil, placeholder: "#{t('placeholders.map_search')}", id: "address"
+  .large-3.columns
+    = link_to "FIND", "#", id: "go-to-address", class: "custom-button"
     %br/
+
+.row
+  .large-12.large-centered.columns
     #map_canvas
 
 :javascript
