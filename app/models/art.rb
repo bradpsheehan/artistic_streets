@@ -1,11 +1,12 @@
 class Art < ActiveRecord::Base
-  attr_accessible :artist, :comment, :title, :location_attributes
+  attr_accessible :artist, :comment, :title, :location_attributes, :image_attributes
 
   has_one :location
+  has_many :images
+
   validates_associated :location
   accepts_nested_attributes_for :location
-
-  has_many :images
+  accepts_nested_attributes_for :images
 
   validates :location, presence: true
 
@@ -15,7 +16,7 @@ class Art < ActiveRecord::Base
       title: title,
       lat: location.latitude,
       long: location.longitude,
-      image: image.url,
+      image: images.first.url
     }
   end
 

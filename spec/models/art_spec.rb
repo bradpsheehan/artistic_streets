@@ -11,7 +11,8 @@ describe Art do
 
   describe '#to_map_art' do
     it 'prepares a hash for map display' do
-      art = Art.new( artist: 'Anonymous', title: 'Best Art Ever', location_attributes:{} )
+      art = Art.create( artist: 'Anonymous', title: 'Best Art Ever', location_attributes:{} )
+      # art.stub(:images).and_return([{url: '/images/original/missing.png'}])
       expected_results = {
                           artist: 'Anonymous',
                           title: 'Best Art Ever',
@@ -30,12 +31,16 @@ describe Art do
 
     it 'can have one image' do
       art = Art.create(title: 'Art Title', artist: 'Unknown', location_attributes: {})
-      image = art.images.new ({:photo => File.new(Rails.root + 'spec/support/rails.png')})
-      
+      image = art.images.new ({:image => File.new(Rails.root + 'spec/support/rails.png')})
+      expect(art.images.count).to eq 1
     end
 
     it 'can have many images' do
-      pending 'write me'
+      art = Art.create(title: 'Art Title', artist: 'Unknown', location_attributes: {})
+      image1 = art.images.create ({:image => File.new(Rails.root + 'spec/support/rails.png')})
+      image2 = art.images.create ({:image => File.new(Rails.root + 'spec/support/rails.png')})
+
+      expect(art.images.count).to eq 2
     end
   end
 end
