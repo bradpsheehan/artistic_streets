@@ -1,11 +1,11 @@
 class Art < ActiveRecord::Base
-  attr_accessible :artist, :comment, :title, :location_attributes, :image
+  attr_accessible :artist, :comment, :title, :location_attributes
 
   has_one :location
   validates_associated :location
   accepts_nested_attributes_for :location
 
-  has_attached_file :image, storage: :s3, styles: { medium: "300x300>", thumb: "100x100>" }
+  has_many :images
 
   validates :location, presence: true
 

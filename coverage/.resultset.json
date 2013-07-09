@@ -52,7 +52,12 @@
         null,
         null,
         null,
+<<<<<<< HEAD
         1,
+=======
+        null,
+        0,
+>>>>>>> Create new Image model and db table
         null,
         null,
         null,
@@ -167,9 +172,21 @@
         1,
         1,
         null
+      ],
+      "/Users/steady/projects/artistic_streets/app/models/image.rb": [
+        1,
+        1,
+        1,
+        null,
+        1,
+        null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1373408524
+=======
+    "timestamp": 1373408817
+>>>>>>> Create new Image model and db table
   },
   "Cucumber Features": {
     "coverage": {
