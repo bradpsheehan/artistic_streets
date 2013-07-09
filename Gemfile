@@ -17,6 +17,8 @@ gem 'geocoder'
 gem 'paperclip', '~> 3.4.2'
 gem 'aws-sdk'
 gem 'instagram'
+gem 'newrelic_rpm'
+gem 'newrelic_rpm'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

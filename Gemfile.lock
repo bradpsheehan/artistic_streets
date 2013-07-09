@@ -121,6 +121,7 @@ GEM
     mime-types (1.23)
     multi_json (1.7.4)
     multipart-post (1.2.0)
+    newrelic_rpm (3.6.5.130)
     nokogiri (1.5.9)
     paperclip (3.4.2)
       activemodel (>= 3.0.0)
@@ -260,6 +261,7 @@ DEPENDENCIES
   instagram
   jquery-rails
   launchy
+  newrelic_rpm
   paperclip (~> 3.4.2)
   pg
   rails (= 3.2.13)
