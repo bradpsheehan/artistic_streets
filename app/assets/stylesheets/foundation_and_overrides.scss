@@ -1068,7 +1068,7 @@ h3 {
   width: 1000px !important;
 }
 #map_canvas {
-  height: 600px;
+  height: 550px;
   width: 100%;
 }
 #wrap {
@@ -1109,4 +1109,30 @@ h3 {
   display: inline;
   list-style-type: none;
 }
-
+.side-nav {
+  padding: 5px;
+  width: 20%;
+  float: left;
+  background-color: lightgray;
+  -webkit-box-shadow: 3px -2px 1px -2px gray;
+}
+.fixed-left {
+  width: 20%;
+  height: 100%;
+  left: 0;
+  position: fixed;
+}
+.main-body {
+  width: 80%;
+  float: right;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.top-bar {
+  overflow: hidden;
+  height: 45px;
+  line-height: 45px;
+  position: relative;
+  background: #111111;
+  margin-bottom: 0px;
+}
