@@ -14,4 +14,9 @@
 /log/*.log
 /tmp
 
+/coverage
 coverage/
+coverage
+
+#Ignore credentials file
+.env

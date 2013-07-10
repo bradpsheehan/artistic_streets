@@ -31,7 +31,7 @@ describe Art do
 
     it 'can have one image' do
       art = Art.create(title: 'Art Title', artist: 'Unknown', location_attributes: {})
-      image = art.images.new ({:image => File.new(Rails.root + 'spec/support/rails.png')})
+      image = art.images.create ({:image => File.new(Rails.root + 'spec/support/rails.png')})
       expect(art.images.count).to eq 1
     end
 

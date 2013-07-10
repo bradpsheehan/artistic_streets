@@ -10,9 +10,6 @@ gem 'simple_form'
 gem 'unicorn'
 gem 'jquery-rails'
 
-gem 'resque', "~> 1.22.0"
-gem 'resque-scheduler', :require => 'resque_scheduler'
-gem 'redis'
 gem 'geocoder'
 gem 'paperclip', '~> 3.4.2'
 gem 'aws-sdk'
@@ -41,4 +38,5 @@ group :test, :development do
   gem 'simplecov'
   gem 'binding_of_caller'
   gem 'launchy'
+  gem 'dotenv-rails'
 end

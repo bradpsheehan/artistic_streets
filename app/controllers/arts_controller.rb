@@ -20,11 +20,14 @@ class ArtsController < ApplicationController
   def new
     @art = Art.new
     @art.build_location
+    @art.images.new
   end
 
   def create
-    @art = Art.new(params[:art])
+    @art = Art.create_art_with_location_and_image(params[:art])
+    # @art = Art.new(params[:art])
 
+    #this might become if @art (true/object vs. false)
     if @art.save
       flash.notice = "Thank you for contributing!"
       redirect_to arts_path(new_art: @art.id)
@@ -32,17 +35,4 @@ class ArtsController < ApplicationController
       render 'new'
     end
   end
-
-  # def instagram_art
-  #   raise params.inspect
-  #   # get object id from the request and the time from the request
-  #   # request from the instagram api for the object id and since this time
-  #   # store new images
-  # end
-
-  # def verify_instagram_art
-  #   puts params
-  #   render text: params[:'hub.challenge']
-  # end
-
 end
