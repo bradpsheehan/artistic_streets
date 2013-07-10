@@ -11,13 +11,23 @@ class Art < ActiveRecord::Base
   validates :location, presence: true
 
   def to_map_art
+    puts self.inspect
+
     {
       artist: artist,
       title: title,
       lat: location.latitude,
       long: location.longitude,
-      image: images.first.url
+      image: retrieve_first_image
     }
+  end
+
+  def retrieve_first_image
+    if !images.empty?
+      images.first.image.url
+    else
+      '/images/original/missing.png'
+    end
   end
 
   def self.create_art_with_location_and_image(params)
