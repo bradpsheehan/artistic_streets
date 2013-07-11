@@ -1,6 +1,8 @@
 class ArtsController < ApplicationController
 
   def index
+    @art = Art.new
+    @art.build_location
     if params[:new_art]
       @art = Art.find(params[:new_art])
       @center_point = { lat: @art.location.latitude, long: @art.location.longitude }

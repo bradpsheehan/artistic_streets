@@ -17,7 +17,7 @@ module ArtsHelper
 <div id="content"></div>
 <div id="siteNotice">
 </div>
-<h4>#{t('headings.art_tite')}</h4>
+<h4>#{t('headings.art_title')}</h4>
 <p id="firstHeading" class="firstHeading">#{art.title}</p>
 <h4>Artist:</h4>
 <p id="secondHeading" class="secondHeading">#{art.artist}</p>
