@@ -16,6 +16,7 @@ class Art < ActiveRecord::Base
     {
       artist: artist,
       title: title,
+      comment: comment,
       lat: location.latitude,
       long: location.longitude,
       image: image_urls

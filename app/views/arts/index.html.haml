@@ -96,7 +96,10 @@
            map: map,
            icon: pinImage,
            shadow: pinShadow,
-           title: art.title
+           title: art.title,
+           id: art.id,
+           optimized: false,
+           art: art
        });
        
        marker.contentString = #{info_windows_for_arts(@arts)}[i]
@@ -106,10 +109,15 @@
       //});
 
       google.maps.event.addListener(marker, 'click', function() {
-        $('.side-nav').html(this.contentString);
+        var art = this.art;
+        $('.side-nav').html('<h4>Title:'+ art.title+ '</h4><p>' + art.comment + '</p>'
+                           );
+
+        // $('.side-nav').html(this.contentString);
         resetMarkerIcons();
         saveIconState(this);
         this.setIcon(pinImage2);
+
         //infowindow.setContent(this.contentString);
         //infowindow.open(map, this);
       });

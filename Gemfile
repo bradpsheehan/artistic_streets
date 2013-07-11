@@ -39,4 +39,5 @@ group :test, :development do
   gem 'binding_of_caller'
   gem 'launchy'
   gem 'dotenv-rails'
+  gem 'selenium-webdriver'
 end
