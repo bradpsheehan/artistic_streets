@@ -10,24 +10,30 @@ class Art < ActiveRecord::Base
 
   validates :location, presence: true
 
-  def to_map_art
-    puts self.inspect
+  MISSING_IMAGE_URL = "http://placegoat.com/300/300"
 
+  def to_map_art
     {
       artist: artist,
       title: title,
       lat: location.latitude,
       long: location.longitude,
-      image: retrieve_first_image
+      image: image_urls
     }
   end
 
-  def retrieve_first_image
-    if !images.empty?
-      images.first.image.url
-    else
-      '/images/original/missing.png'
-    end
+  def image_tags
+  #for each image url, create an image tag and insert it into the info content helper
+
+  tags = image_urls.collect { |url| "<img src='#{url}'>" }
+  tags.join(' ')
+  end
+
+  def image_urls
+    images = self.images.collect { |image| image.url(:medium) }
+
+    images << MISSING_IMAGE_URL if images.empty?
+    images
   end
 
   def self.create_art_with_location_and_image(params)

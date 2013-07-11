@@ -12,11 +12,6 @@ class ArtsController < ApplicationController
     @arts = Art.all
   end
 
-  def show
-    @art = Art.includes(:location).find(params[:id])
-    @location = @art.location
-  end
-
   def new
     @art = Art.new
     @art.build_location
@@ -25,9 +20,7 @@ class ArtsController < ApplicationController
 
   def create
     @art = Art.create_art_with_location_and_image(params[:art])
-    # @art = Art.new(params[:art])
 
-    #this might become if @art (true/object vs. false)
     if @art.save
       flash.notice = "Thank you for contributing!"
       redirect_to arts_path(new_art: @art.id)

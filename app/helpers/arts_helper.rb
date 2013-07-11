@@ -12,7 +12,11 @@ module ArtsHelper
     end
   end
 
+
   def info_window_content(art)
+    #art.image_urls
+    #art.to_map_art
+    #can we rework this method to use the list of image urls and incorporate some carousel?
 <<-eos
 <div id="content"></div>
 <div id="siteNotice">
