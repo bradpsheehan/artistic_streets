@@ -48,6 +48,7 @@ describe Art do
       subject.save
 
       expected_results = {
+                            id: subject.id,
                             artist: 'someone',
                             title: 'Art Title',
                             comment: "A brilliant piece",

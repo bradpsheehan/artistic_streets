@@ -25,13 +25,9 @@
 
 :javascript
   $('#go-to-address').click(function() {
-
-  var address = $('#address').val();
-
-  centerMap(address);
-
-  return false;
-
+    var address = $('#address').val();
+    centerMap(address);
+    return false;
   });
 
 :javascript
@@ -117,8 +113,7 @@
             return imageTags += '<img src="' + value + '"/><br/>'
           });
 
-          var addPhotoButton = 'button goes here'
-          //"<form enctype='multipart/form-data' method='post' action='arts/" + art.id +"'><input type='file' name='file'><br/><input type='submit'></form>"
+          var addPhotoButton = "<form enctype='multipart/form-data' method='post' action='/images'><input type='file' name='image' id='add-photo-image'><input type='hidden' name='art_id' value='" + art.id +"id='add-photo-artid'><input type='submit' id='add-photo'></form>"
 
           var sideBarHTML = '<h4>Title: '+ art.title +'</h4><br/><h5>Artist: '+ art.artist+'</h5><p>Comment: '+ art.comment+'</p>' + imageTags + addPhotoButton
 
@@ -129,6 +124,8 @@
         saveIconState(this);
         this.setIcon(pinImage2);
       });
+
+      var files = [];
 
       markersArray.push(marker)
 

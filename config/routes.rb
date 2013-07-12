@@ -4,6 +4,7 @@ ArtisticStreets::Application.routes.draw do
   # get '/arts/instagram', to: 'arts#verify_instagram_art'
   get '/i18n' => 'i18n#update'
   resources :arts, only: [:new, :index, :show, :create, :update]
-
+  resources :images, only: [:create]
+  
   root :to => 'application#landing_page'
 end
