@@ -12,11 +12,7 @@ module ArtsHelper
     end
   end
 
-
   def info_window_content(art)
-    #art.image_urls
-    #art.to_map_art
-    #can we rework this method to use the list of image urls and incorporate some carousel?
 <<-eos
 <div id="content"></div>
 <div id="siteNotice">
@@ -27,9 +23,12 @@ module ArtsHelper
 <p id="secondHeading" class="secondHeading">#{art.artist}</p>
 <h4>Location:</h4>
 <p id="secondHeading" class="secondHeading">#{art.location[:address]}</p>
+<h4>Comment:</h4>
+<p id="secondHeading" class="secondHeading">#{art.comment}</p>
+<button data-reveal-id="addPhotoModal" href=# >Add A Photo of This Art</button
 <div id="bodyContent" class="row">
 <div class="large-11 large-centered columns">
-<img src="#{art.images.first.image.url(:medium)}">
+#{art.image_tags}
 </div>
 </div>
 </div>

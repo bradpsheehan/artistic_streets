@@ -1,0 +1,16 @@
+.row
+  %h4 Hello There I am a Winner
+  .small-11.large-centered.columns
+    = form_for(@art, html: {multipart: true}) do |f|
+      =f.fields_for :image do |i|
+        .control-group
+          =i.label :image, "#{t('placeholders.image')}"
+          =i.file_field :image
+      %br/
+      %br/
+      =f.submit "#{t('buttons.submit')}", url: "#{ @art_path(art) }", html: {method: "put"}, class:"custom-button"
+
+<form enctype='multipart/form-data' method='put' action='arts/update'>
+  <input type='file' name='file'>
+  <submit>Click Me</submit>
+</form>

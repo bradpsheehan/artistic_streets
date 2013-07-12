@@ -14,6 +14,7 @@ class Art < ActiveRecord::Base
 
   def to_map_art
     {
+      id: id,
       artist: artist,
       title: title,
       comment: comment,

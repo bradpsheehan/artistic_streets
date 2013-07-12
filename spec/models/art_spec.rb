@@ -50,6 +50,7 @@ describe Art do
       expected_results = {
                             artist: 'someone',
                             title: 'Art Title',
+                            comment: "A brilliant piece",
                             lat: nil,
                             long: nil,
                             image: ['http://placegoat.com/150/150']

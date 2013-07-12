@@ -67,9 +67,6 @@
 
     map = new google.maps.Map(document.getElementById('map_canvas'),
         mapOptions);
-
-        console.log(artObjects.length);
-
     markersArray = [];
 
     for (var i = 0; i < artObjects.length; i++) {
@@ -97,7 +94,7 @@
            icon: pinImage,
            shadow: pinShadow,
            title: art.title,
-           id: art.id,
+           art_id: art.id,
            optimized: false,
            art: art
        });
@@ -109,17 +106,28 @@
       //});
 
       google.maps.event.addListener(marker, 'click', function() {
-        var art = this.art;
-        $('.side-nav').html('<h4>Title:'+ art.title+ '</h4><p>' + art.comment + '</p>'
-                           );
+        var art_id = this.art_id;
+        var url = '/arts/'+ art_id + '.json';
 
-        // $('.side-nav').html(this.contentString);
+        $.getJSON(url, function(data) {
+          var art = data.art
+          var imageTags = ""
+          
+          $.each(data.images, function(index, value){
+            return imageTags += '<img src="' + value + '"/><br/>'
+          });
+
+          var addPhotoButton = 'button goes here'
+          //"<form enctype='multipart/form-data' method='post' action='arts/" + art.id +"'><input type='file' name='file'><br/><input type='submit'></form>"
+
+          var sideBarHTML = '<h4>Title: '+ art.title +'</h4><br/><h5>Artist: '+ art.artist+'</h5><p>Comment: '+ art.comment+'</p>' + imageTags + addPhotoButton
+
+          $('.side-nav').append(sideBarHTML);
+        });
+
         resetMarkerIcons();
         saveIconState(this);
         this.setIcon(pinImage2);
-
-        //infowindow.setContent(this.contentString);
-        //infowindow.open(map, this);
       });
 
       markersArray.push(marker)
