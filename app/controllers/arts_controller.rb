@@ -33,6 +33,11 @@ class ArtsController < ApplicationController
     end
   end
 
+  def count
+    @count = Art.all.count
+    render json:{count: @count}
+  end
+
   # def instagram_art
   #   raise params.inspect
   #   # get object id from the request and the time from the request

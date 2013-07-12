@@ -4,6 +4,8 @@ ArtisticStreets::Application.routes.draw do
 
   get '/discover', to: 'arts#index'
 
+  get '/count', to: 'arts#count'
+
   post '/arts/instagram', to: 'arts#instagram_art'
   get '/arts/instagram', to: 'arts#verify_instagram_art'
 
