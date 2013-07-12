@@ -24,13 +24,6 @@ class Art < ActiveRecord::Base
     }
   end
 
-  def image_tags
-  #for each image url, create an image tag and insert it into the info content helper
-
-  tags = image_urls.collect { |url| "<img src='#{url}'>" }
-  tags.join(' ')
-  end
-
   def image_urls
     images = self.images.collect { |image| image.url(:medium) }
 

@@ -9,18 +9,6 @@ describe Art do
     expect { subject.location = nil }.to change { subject.valid? }.to be_false
   end
 
-  describe 'image_tags' do
-    it 'makes html image tags' do
-      image = subject.images.build
-      image2 = subject.images.build
-      image.stub(:url).and_return('http://placegoat.com/150/150')
-      image2.stub(:url).and_return('http://placegoat.com/100/100')
-      subject.save
-
-      expect(subject.image_tags).to eq "<img src='http://placegoat.com/150/150'> <img src='http://placegoat.com/100/100'>" 
-    end
-  end
-
   describe '#image_urls' do
     context 'when there are no images' do
       it 'returns an array with one missing image url in it' do
