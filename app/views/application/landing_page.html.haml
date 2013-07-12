@@ -15,6 +15,10 @@
   .large-11.larg-centered.columns#landing-bottom-content
     %h4
       =t('headings.landing_description')
+    #art-count
+      %h6 Currently Curating:
+      %h6#art-count-number
+      %h6 Works of Street Art, and Counting...
 / .row
 /   .large-11.larg-centered.columns#landing-bottom-content
 /     %h2.pull-left
@@ -23,3 +27,12 @@
 /       Track Art
 /     %h2.pull-left
 /       Walk Art
+
+
+:javascript
+  $(document).ready(function() {
+    $.getJSON(url, function(data){
+      
+    });
+    $('#art-count-number').append('Art Count Goes Here');
+  });
