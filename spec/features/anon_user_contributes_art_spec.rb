@@ -17,4 +17,24 @@ describe "user can contribute art to the documentary" do
     expect( current_path ).to eq arts_path
   end
 
+  context 'when there is already art with a photo', js: true do
+    it 'adds another photo to the art piece' do
+      pending 'dont know how to make it click google maps marker'
+      art = Art.create(title: 'Hello', artist: 'what', location_attributes: {latitude: 42.365, longitude:-71.0})
+      visit discover_path
+
+      within("#map_canvas") do
+        expect(page).to have_selector('Hello')
+        # find(:xpath, "//div[@class='gmnoprint' and @title=#{art.title}]").click
+
+        # selenium.click("xpath=(//div[@class='gmnoprint' and @title])")
+        # save_and_open_page
+      end
+      #click on it
+      #within the sidepanel, expect that theres a link
+      #click the link
+      #upload the photo
+      #expect to see the photo sidebar/ flash message/ check db to see its added
+    end
+  end
 end

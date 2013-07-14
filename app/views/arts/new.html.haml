@@ -12,8 +12,10 @@
       =f.fields_for :location do |p|
         .control-group
           =p.text_field :address, placeholder: "#{t('placeholders.address')}"
-      = f.label :image, "#{t('placeholders.image')}"
-      = f.file_field :image
+      =f.fields_for :image do |i|
+        .control-group
+          =i.label :image, "#{t('placeholders.image')}"
+          =i.file_field :image
       %br/
       %br/
       =f.submit "#{t('buttons.submit')}", class:"custom-button"
