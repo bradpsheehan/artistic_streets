@@ -14,6 +14,7 @@ class Art < ActiveRecord::Base
 
   def to_map_art
     {
+      id: id,
       artist: artist,
       title: title,
       comment: comment,
@@ -21,13 +22,6 @@ class Art < ActiveRecord::Base
       long: location.longitude,
       image: image_urls
     }
-  end
-
-  def image_tags
-  #for each image url, create an image tag and insert it into the info content helper
-
-  tags = image_urls.collect { |url| "<img src='#{url}'>" }
-  tags.join(' ')
   end
 
   def image_urls

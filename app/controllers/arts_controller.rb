@@ -3,19 +3,23 @@ class ArtsController < ApplicationController
   def index
     @art = Art.new
     @art.build_location
+
     if params[:new_art]
       @art = Art.find(params[:new_art])
-      @center_point = { lat: @art.location.latitude, long: @art.location.longitude }
+      @center_point = {
+                        lat: @art.location.latitude,
+                        long: @art.location.longitude
+                      }
     else
       @center_point = { lat: 42.3583, long: -71.0603 }
     end
     @arts = Art.all
   end
 
-  def new
-    @art = Art.new
-    @art.build_location
-    @art.images.new
+  def show
+    @art = Art.find(params[:id])
+    @images = @art.image_urls
+    render :json => { :art => @art, :images => @images }
   end
 
   def create

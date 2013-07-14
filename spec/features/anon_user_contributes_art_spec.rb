@@ -19,6 +19,7 @@ describe "user can contribute art to the documentary" do
 
   context 'when there is already art with a photo', js: true do
     it 'adds another photo to the art piece' do
+      pending 'dont know how to make it click google maps marker'
       art = Art.create(title: 'Hello', artist: 'what', location_attributes: {latitude: 42.365, longitude:-71.0})
       visit discover_path
 
