@@ -3,9 +3,13 @@ class ArtsController < ApplicationController
   def index
     @art = Art.new
     @art.build_location
+
     if params[:new_art]
       @art = Art.find(params[:new_art])
-      @center_point = { lat: @art.location.latitude, long: @art.location.longitude }
+      @center_point = {
+                        lat: @art.location.latitude,
+                        long: @art.location.longitude
+                      }
     else
       @center_point = { lat: 42.3583, long: -71.0603 }
     end
@@ -13,17 +17,13 @@ class ArtsController < ApplicationController
   end
 
   def show
-    @art = Art.includes(:location).find(params[:id])
-    @location = @art.location
-  end
-
-  def new
-    @art = Art.new
-    @art.build_location
+    @art = Art.find(params[:id])
+    @images = @art.image_urls
+    render :json => { :art => @art, :images => @images }
   end
 
   def create
-    @art = Art.new(params[:art])
+    @art = Art.create_art_with_location_and_image(params[:art])
 
     if @art.save
       flash.notice = "Thank you for contributing!"
@@ -49,5 +49,4 @@ class ArtsController < ApplicationController
   #   puts params
   #   render text: params[:'hub.challenge']
   # end
-
 end

@@ -1,15 +1,18 @@
 ArtisticStreets::Application.routes.draw do
-
-  root :to => 'application#landing_page'
-
   get '/discover', to: 'arts#index'
+  
+  # post '/arts/instagram', to: 'arts#instagram_art'
+  # get '/arts/instagram', to: 'arts#verify_instagram_art'
 
   get '/count', to: 'arts#count'
 
   post '/arts/instagram', to: 'arts#instagram_art'
   get '/arts/instagram', to: 'arts#verify_instagram_art'
+  get '/images', to: 'images#index', as: 'gallery'
 
   get '/i18n' => 'i18n#update'
-
-  resources :arts
+  resources :arts, only: [:index, :show, :create]
+  resources :images, only: [:create]
+  
+  root :to => 'application#landing_page'
 end

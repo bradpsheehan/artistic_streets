@@ -1,8 +1,4 @@
 .row
-  .large-12.columns
-    %h3
-      = t('headings.discover_art')
-.row
   .large-9.columns
     = text_field_tag 'location', nil, placeholder: "#{t('placeholders.map_search')}", id: "address"
   .large-3.columns
@@ -14,7 +10,7 @@
     #map_canvas
 .row
   .large-6.columns
-    =link_to "Gallery", '#', class: "custom-button"
+    =link_to "Gallery", '#', class: "custom-button", id: "gallery"
   .large-6.columns
     =link_to "Map", '#', class: "custom-button"
 
@@ -25,13 +21,9 @@
 
 :javascript
   $('#go-to-address').click(function() {
-
-  var address = $('#address').val();
-
-  centerMap(address);
-
-  return false;
-
+    var address = $('#address').val();
+    centerMap(address);
+    return false;
   });
 
 :javascript
@@ -54,6 +46,12 @@
 
     var artObjects = #{art_objects(@arts).to_json};
 
+    //$(document).on('click', '#gallery', function(){
+      //console.log(artObjects[0]);
+      //$('.main-body').html
+      //return false;
+    //});
+
     geocoder = new google.maps.Geocoder();
 
 
@@ -67,9 +65,6 @@
 
     map = new google.maps.Map(document.getElementById('map_canvas'),
         mapOptions);
-
-        console.log(artObjects.length);
-
     markersArray = [];
 
     for (var i = 0; i < artObjects.length; i++) {
@@ -96,23 +91,42 @@
            map: map,
            icon: pinImage,
            shadow: pinShadow,
-           title: art.title
+           title: art.title,
+           art_id: art.id,
+           optimized: false,
+           art: art
+
        });
-       
-       marker.contentString = #{info_windows_for_arts(@arts)}[i]
 
       //var infowindow = new google.maps.InfoWindow({
         //maxWidth: 400,
       //});
 
       google.maps.event.addListener(marker, 'click', function() {
-        $('.side-nav').html(this.contentString);
+        var art_id = this.art_id;
+        var url = '/arts/'+ art_id + '.json';
+
+        $.getJSON(url, function(data) {
+          var art = data.art
+          var imageTags = ""
+
+          $.each(data.images, function(index, value){
+            return imageTags += '<img src="' + value + '"/><br/>'
+          });
+
+          var addPhotoButton = "<form enctype='multipart/form-data' method='post' action='/images'><input type='file' name='image' id='add-photo-image'><input type='hidden' name='art_id' value='" + art.id +"id='add-photo-artid'><input type='submit' id='add-photo'></form>"
+
+          var sideBarHTML = '<h4>Title: '+ art.title +'</h4><br/><h5>Artist: '+ art.artist+'</h5><p>Comment: '+ art.comment+'</p>' + imageTags + addPhotoButton
+
+          $('.side-nav').append(sideBarHTML);
+        });
+
         resetMarkerIcons();
         saveIconState(this);
         this.setIcon(pinImage2);
-        //infowindow.setContent(this.contentString);
-        //infowindow.open(map, this);
       });
+
+      var files = [];
 
       markersArray.push(marker)
 

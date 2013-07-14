@@ -1139,3 +1139,14 @@ h3 {
 #address {
   height: 43px;
 }
+.image-tile {
+  background-color: white;
+  height: 300px;
+  width: 300px;
+  margin-bottom: 25px;
+ img { 
+   position:absolute;
+   clip:rect(0px,300px,300px,0px);
+  }
+}
+

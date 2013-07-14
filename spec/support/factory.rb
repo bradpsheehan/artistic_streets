@@ -13,5 +13,4 @@ FactoryGirl.define do
     longitude 1.5
     art
   end
-
 end
