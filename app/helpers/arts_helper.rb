@@ -29,7 +29,7 @@ module ArtsHelper
 <p id="secondHeading" class="secondHeading">#{art.location[:address]}</p>
 <div id="bodyContent" class="row">
 <div class="large-11 large-centered columns">
-<img src="#{art.images.first.image.url(:medium)}">
+#{art.image_tags}
 </div>
 </div>
 </div>

@@ -1,8 +1,4 @@
 .row
-  .large-12.columns
-    %h3
-      = t('headings.discover_art')
-.row
   .large-9.columns
     = text_field_tag 'location', nil, placeholder: "#{t('placeholders.map_search')}", id: "address"
   .large-3.columns
@@ -14,7 +10,7 @@
     #map_canvas
 .row
   .large-6.columns
-    =link_to "Gallery", '#', class: "custom-button"
+    =link_to "Gallery", '#', class: "custom-button", id: "gallery"
   .large-6.columns
     =link_to "Map", '#', class: "custom-button"
 
@@ -53,6 +49,12 @@
   function initialize() {
 
     var artObjects = #{art_objects(@arts).to_json};
+
+    //$(document).on('click', '#gallery', function(){
+      //console.log(artObjects[0]);
+      //$('.main-body').html
+      //return false;
+    //});
 
     geocoder = new google.maps.Geocoder();
 
@@ -110,8 +112,7 @@
 
       google.maps.event.addListener(marker, 'click', function() {
         //var art = this.art;
-        //$('.side-nav').html('<h4>Title:'+ art.title+ '</h4><p>' + art.comment + '</p>'
-                           );
+        //$('.side-nav').html('<h4>Title:'+ art.title+ '</h4><p>' + art.comment + '</p>' );
 
         $('.side-nav').html(this.contentString);
         resetMarkerIcons();
