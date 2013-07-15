@@ -1150,3 +1150,33 @@ h3 {
   }
 }
 
+//
+// Image Carousel in Side Nav Bar:
+//
+
+
+.image_carousel {
+  padding: 0px;
+  margin: 0px;
+}
+
+.clearfix {
+  float: none;
+  clear: both;
+}
+
+a#art-prev, a#art-next { 
+  width: 25%;
+  padding: 5px;
+  margin: 5px;
+}
+
+#carousel-buttons{
+ width: 100%;
+ text-align: center;
+}
+
+a#art-prev:hover { background-position: 0 -50px; }
+a#art-next:hover { background-position: -50px -50px; }
+
+
