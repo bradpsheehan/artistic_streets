@@ -18,42 +18,15 @@
 #myModal.reveal-modal
   =render template: "arts/new"
   %a.close-reveal-modal ×
-
-:javascript
-  $('#go-to-address').click(function() {
-    var address = $('#address').val();
-    centerMap(address);
-    return false;
-  });
-
+  
 :javascript
   var map;
   var geocoder;
 
-  function centerMap() {
-    var address = document.getElementById("address").value;
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-      }
-      else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
-  }
-
   function initialize() {
 
     var artObjects = #{art_objects(@arts).to_json};
-
-    //$(document).on('click', '#gallery', function(){
-      //console.log(artObjects[0]);
-      //$('.main-body').html
-      //return false;
-    //});
-
     geocoder = new google.maps.Geocoder();
-
 
     var myLatlng = new google.maps.LatLng(#{@center_point[:lat]}, #{@center_point[:long]})
 
@@ -76,6 +49,7 @@
         new google.maps.Size(21, 34),
         new google.maps.Point(0,0),
         new google.maps.Point(10, 34));
+
       var pinImage2 = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor2,
         new google.maps.Size(50, 75),
         new google.maps.Point(0,0),
@@ -95,38 +69,10 @@
            art_id: art.id,
            optimized: false,
            art: art
-
        });
 
-      //var infowindow = new google.maps.InfoWindow({
-        //maxWidth: 400,
-      //});
-
       google.maps.event.addListener(marker, 'click', function() {
-        var art_id = this.art_id;
-        var url = '/arts/'+ art_id + '.json';
-
-        $.getJSON(url, function(data) {
-          var art = data.art
-          var imageTags = ""
-
-          $.each(data.images, function(index, value){
-            return imageTags += '<li><img src="' + value + '"/></li>'
-          });
-
-          var addPhotoButton = "<form enctype='multipart/form-data' method='post' action='/images'><input type='file' name='image' id='add-photo-image'><input type='hidden' name='art_id' value='" + art.id +"id='add-photo-artid'><input type='submit' id='add-photo'></form>"
-
-          var sideBarHTML = '<h4><em>Title:</em> '+ art.title +'</h4><h5><em>Artist: </em>'+ art.artist+'</h5><p id="art-comment"><em>Comment:</em> '+ art.comment+'</p><div class="image_carousel"><ul id="carousel">' + imageTags + '</ul><div class="clearfix"></div><div id="carousel-buttons"><a class="prev custom-button" id="art-prev" href="#"><span>prev</span></a><a class="next custom-button" id="art-next" href="#"><span>next</span></a></div></div>' +addPhotoButton;
-
-          $('.side-nav').append(sideBarHTML);
-          $("#carousel").carouFredSel({
-              auto : false,
-              items: { minimum: 1, start: "random", width: 200, height: 200 },
-              prev : "#art-prev",
-              next : "#art-next"
-          });
-        });
-
+        populateSideBar(this.art_id);
         resetMarkerIcons();
         saveIconState(this);
         this.setIcon(pinImage2);
@@ -135,16 +81,6 @@
       var files = [];
 
       markersArray.push(marker)
-
-    }
-    function resetMarkerIcons() {
-      //  reset all the icons back to normal except the one you clicked
-      for (var i = 0; i < markersArray.length; i++) {
-          markersArray[i].setIcon(pinImage);
-      }
-    }
-    function saveIconState(marker) {
-      clickedMarkerTitle = marker.title;
     }
   }
 
