@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require foundation
+//= require jquery.carouFredSel-6.2.1.js
 //= require_tree .
 
 $(document).foundation();

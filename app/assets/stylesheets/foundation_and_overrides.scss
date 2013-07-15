@@ -1150,3 +1150,57 @@ h3 {
   }
 }
 
+//
+// Image Carousel in Side Nav Bar:
+//
+
+
+.image_carousel {
+  padding: 0px;
+  margin: 0px;
+  height: 320px;
+  border: 2px solid green;
+}
+
+.caroufredsel_wrapper{
+  border: 1px solid blue;
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.image_carousel img {
+  width: 300px;
+  height: 300px;
+  display: block;
+  float: left;
+}
+
+.clearfix {
+  float: none;
+  clear: both;
+}
+
+ul#carousel{
+  padding: 0px;
+  margin: 0px;
+}
+
+li#carousel{
+  padding: 0px;
+  margin: 0px;
+}
+
+img#carousel {
+  padding: 0px;
+  margin: 0px;
+}
+
+a.prev { left: -22px; background-position: 0 0; }
+a.prev:hover { background-position: 0 -50px; }
+a.next { right: -22px; background-position: -50px 0; }
+a.next:hover { background-position: -50px -50px; }
+// a.prev span, a.next span { display: none; }
+
+
