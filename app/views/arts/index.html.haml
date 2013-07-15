@@ -116,14 +116,14 @@
 
           var addPhotoButton = "<form enctype='multipart/form-data' method='post' action='/images'><input type='file' name='image' id='add-photo-image'><input type='hidden' name='art_id' value='" + art.id +"id='add-photo-artid'><input type='submit' id='add-photo'></form>"
 
-          var sideBarHTML = '<h4>Title: '+ art.title +'</h4><br/><h5>Artist: '+ art.artist+'</h5><p>Comment: '+ art.comment+'</p><div class="image_carousel"><ul id="carousel">' + imageTags + '</ul><div class="clearfix"></div><a class="prev" id="foo1_prev" href="#"><span>prev</span></a><a class="next" id="foo1_next" href="#"><span>next</span></a></div>' +addPhotoButton;
+          var sideBarHTML = '<h4><em>Title:</em> '+ art.title +'</h4><h5><em>Artist: </em>'+ art.artist+'</h5><p id="art-comment"><em>Comment:</em> '+ art.comment+'</p><div class="image_carousel"><ul id="carousel">' + imageTags + '</ul><div class="clearfix"></div><div id="carousel-buttons"><a class="prev custom-button" id="art-prev" href="#"><span>prev</span></a><a class="next custom-button" id="art-next" href="#"><span>next</span></a></div></div>' +addPhotoButton;
 
           $('.side-nav').append(sideBarHTML);
           $("#carousel").carouFredSel({
               auto : false,
-              items: 1,
-              prev : "#foo1_prev",
-              next : "#foo1_next"
+              items: { minimum: 1, start: "random", width: 200, height: 200 },
+              prev : "#art-prev",
+              next : "#art-next"
           });
         });
 
