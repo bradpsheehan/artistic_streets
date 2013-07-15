@@ -18,42 +18,15 @@
 #myModal.reveal-modal
   =render template: "arts/new"
   %a.close-reveal-modal ×
-
-:javascript
-  $('#go-to-address').click(function() {
-    var address = $('#address').val();
-    centerMap(address);
-    return false;
-  });
-
+  
 :javascript
   var map;
   var geocoder;
 
-  function centerMap() {
-    var address = document.getElementById("address").value;
-    geocoder.geocode( { 'address': address}, function(results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-        map.setCenter(results[0].geometry.location);
-      }
-      else {
-        alert("Geocode was not successful for the following reason: " + status);
-      }
-    });
-  }
-
   function initialize() {
 
     var artObjects = #{art_objects(@arts).to_json};
-
-    //$(document).on('click', '#gallery', function(){
-      //console.log(artObjects[0]);
-      //$('.main-body').html
-      //return false;
-    //});
-
     geocoder = new google.maps.Geocoder();
-
 
     var myLatlng = new google.maps.LatLng(#{@center_point[:lat]}, #{@center_point[:long]})
 
@@ -69,76 +42,17 @@
 
     for (var i = 0; i < artObjects.length; i++) {
       var art = artObjects[i];
-
-      var pinColor = "2980b9";
-      var pinColor2 = "65ba4a";
-      var pinImage = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor,
-        new google.maps.Size(21, 34),
-        new google.maps.Point(0,0),
-        new google.maps.Point(10, 34));
-      var pinImage2 = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + pinColor2,
-        new google.maps.Size(50, 75),
-        new google.maps.Point(0,0),
-        new google.maps.Point(10, 34));
-
-      var pinShadow = new google.maps.MarkerImage("http://chart.apis.google.com/chart?chst=d_map_pin_shadow",
-        new google.maps.Size(40, 37),
-        new google.maps.Point(0, 0),
-        new google.maps.Point(12, 35));
-
-      var marker = new google.maps.Marker({
-           position: new google.maps.LatLng(art.lat, art.long),
-           map: map,
-           icon: pinImage,
-           shadow: pinShadow,
-           title: art.title,
-           art_id: art.id,
-           optimized: false,
-           art: art
-
-       });
-
-      //var infowindow = new google.maps.InfoWindow({
-        //maxWidth: 400,
-      //});
+      var marker = createMarker(art);
 
       google.maps.event.addListener(marker, 'click', function() {
-        var art_id = this.art_id;
-        var url = '/arts/'+ art_id + '.json';
-
-        $.getJSON(url, function(data) {
-          var art = data.art
-          var imageTags = ""
-
-          $.each(data.images, function(index, value){
-            return imageTags += '<img src="' + value + '"/><br/>'
-          });
-
-          var addPhotoButton = "<form enctype='multipart/form-data' method='post' action='/images'><input type='file' name='image' id='add-photo-image'><input type='hidden' name='art_id' value='" + art.id +"id='add-photo-artid'><input type='submit' id='add-photo'></form>"
-
-          var sideBarHTML = '<h4>Title: '+ art.title +'</h4><br/><h5>Artist: '+ art.artist+'</h5><p>Comment: '+ art.comment+'</p>' + imageTags + addPhotoButton
-
-          $('.side-nav').append(sideBarHTML);
-        });
-
+        populateSideBar(this.art_id);
         resetMarkerIcons();
         saveIconState(this);
         this.setIcon(pinImage2);
       });
 
       var files = [];
-
       markersArray.push(marker)
-
-    }
-    function resetMarkerIcons() {
-      //  reset all the icons back to normal except the one you clicked
-      for (var i = 0; i < markersArray.length; i++) {
-          markersArray[i].setIcon(pinImage);
-      }
-    }
-    function saveIconState(marker) {
-      clickedMarkerTitle = marker.title;
     }
   }
 
