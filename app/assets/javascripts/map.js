@@ -10,7 +10,7 @@ var centerMap = function() {
   });
 }
 
-var resetMarkerIcons = function() {
+var resetMarkerIcons = function(pinImage) {
   //  reset all the icons back to normal except the one you clicked
   for (var i = 0; i < markersArray.length; i++) {
       markersArray[i].setIcon(pinImage);

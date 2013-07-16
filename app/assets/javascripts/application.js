@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require foundation
+//= require handlebars
 //= require jquery.carouFredSel-6.2.1.js
 //= require map
 //= require_tree .

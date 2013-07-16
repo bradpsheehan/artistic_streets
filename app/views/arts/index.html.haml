@@ -18,6 +18,24 @@
 #myModal.reveal-modal
   =render template: "arts/new"
   %a.close-reveal-modal ×
+
+
+%script#sidebar-template{:type => "text/x-handlebars-template"}
+  %h4
+    Title:  {{ art.title }}
+  %h5
+    Artist  {{ art.artist }}
+  %p#art-comment Comment: {{ art.comment }}
+  .image_carousel
+    %ul#carousel
+    .clearfix
+    #carousel-buttons
+      %a.prev.custom-button#art-prev{ :href => "#"} prev
+      %a.next.custom-button#art-next{ :href => "#"} next
+    %form{ enctype: 'multipart/form-data', method: 'post', action: '/images'}
+      %input#add-photo-image{ type:'file', name:'image' }
+      %input#add-photo-artid{ type:'hidden', name:'art_id', value:'{{ art.id }}' }
+      %input#add-photo{ type:'submit' }
   
 :javascript
   var map;
@@ -46,9 +64,9 @@
 
       google.maps.event.addListener(marker, 'click', function() {
         populateSideBar(this.art_id);
-        resetMarkerIcons();
+        resetMarkerIcons(marker.pinImage);
         saveIconState(this);
-        this.setIcon(pinImage2);
+        this.setIcon(marker.pinImage2);
       });
 
       var files = [];
