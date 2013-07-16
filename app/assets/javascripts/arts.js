@@ -13,19 +13,22 @@ var populateSideBar = function(art_id) {
 
     $.each(data.images, function(index, value){ return imageTags += '<li><img src="' + value + '"/></li>'; });
 
+    console.log(imageTags);
+
     var source   = $("#sidebar-template").html();
     var template = Handlebars.compile(source);
-    var context = { art: {id: art.id, title: art.title, artist: art.artist ,comment: art.comment }, imageTags: imageTags };
+    var context = { art: {id: art.id, title: art.title, artist: art.artist ,comment: art.comment } };
 
     var html = template(context);
     $('.side-nav').append(html);
+    $('ul#carousel').append(imageTags);
 
-   $("#carousel").carouFredSel(
+    $("#carousel").carouFredSel(
       {
         auto : false,
         items: { 
                   minimum: 1,
-                  visible: 'variable,
+                  visible: 'variable',
                   start: "random",
                   width: 200,
                   height: 200
