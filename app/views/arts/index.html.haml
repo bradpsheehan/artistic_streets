@@ -30,16 +30,19 @@
   %p#art-comment
     %em Comment:
     {{ art.comment }}
+  #add-photo-form
+    %h5 Add A Photo:
+    %form{ enctype: 'multipart/form-data', method: 'post', action: '/images'}
+      %input#add-photo-image{ type:'file', name:'image' }
+      %input#add-photo-artid{ type:'hidden', name:'art_id', value:'{{ art.id }}' }
+      %input#add-photo{ type:'submit' }
   .image_carousel
     %ul#carousel
     .clearfix
     #carousel-buttons
       %a.prev.custom-button#art-prev{ :href => "#"} prev
       %a.next.custom-button#art-next{ :href => "#"} next
-    %form{ enctype: 'multipart/form-data', method: 'post', action: '/images'}
-      %input#add-photo-image{ type:'file', name:'image' }
-      %input#add-photo-artid{ type:'hidden', name:'art_id', value:'{{ art.id }}' }
-      %input#add-photo{ type:'submit' }
+ 
   
 :javascript
   var map;

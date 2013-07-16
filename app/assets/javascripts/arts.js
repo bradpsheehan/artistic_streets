@@ -27,12 +27,14 @@ var populateSideBar = function(art_id) {
     $("#carousel").carouFredSel(
       {
         auto : false,
+        width: '100%',
+        align: 'center',
         items: { 
                   minimum: 1,
                   visible: 'variable',
                   start: "random",
-                  width: 200,
-                  height: 200
+                  width: 300,
+                  height: 'variable'
                   },
         prev : "#art-prev",
         next : "#art-next"
