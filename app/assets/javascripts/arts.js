@@ -6,14 +6,15 @@ $('#go-to-address').click(function() {
 
 
 var populateSideBar = function(art_id) {
+  //first clear sidebar if theres nothing in it
+  $('.side-nav').empty();
+
   var url = '/arts/'+ art_id + '.json';
   $.getJSON(url, function(data) {
     var art = data.art;
     var imageTags = "";
 
     $.each(data.images, function(index, value){ return imageTags += '<li><img src="' + value + '"/></li>'; });
-
-    console.log(imageTags);
 
     var source   = $("#sidebar-template").html();
     var template = Handlebars.compile(source);
@@ -26,12 +27,14 @@ var populateSideBar = function(art_id) {
     $("#carousel").carouFredSel(
       {
         auto : false,
+        width: '100%',
+        align: 'center',
         items: { 
                   minimum: 1,
                   visible: 'variable',
                   start: "random",
-                  width: 200,
-                  height: 200
+                  width: 300,
+                  height: 'variable'
                   },
         prev : "#art-prev",
         next : "#art-next"

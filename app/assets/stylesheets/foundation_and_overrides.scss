@@ -1156,8 +1156,19 @@ h3 {
 
 
 .image_carousel {
+  border: 1px solid lightgray;
+  overflow: hidden;
   padding: 0px;
   margin: 0px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#carousel{
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  overflow: hidden;
 }
 
 .clearfix {
@@ -1169,6 +1180,13 @@ a#art-prev, a#art-next {
   width: 25%;
   padding: 5px;
   margin: 5px;
+  position: absolute;
+}
+
+a#art-next{
+  right: 1%;  
+}
+a#art-prev{
 }
 
 #carousel-buttons{
@@ -1179,4 +1197,16 @@ a#art-prev, a#art-next {
 a#art-prev:hover { background-position: 0 -50px; }
 a#art-next:hover { background-position: -50px -50px; }
 
+h5#add-photo-form{
+  width: 100%;
+  text-align: center;
+}
 
+#add-photo-form{
+  border: 3px solid #999;
+  width: 100%;
+  float: left;
+  margin: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
