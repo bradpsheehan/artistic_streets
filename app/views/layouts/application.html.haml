@@ -18,10 +18,10 @@
   = csrf_meta_tag
   %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
 
-%body
+%body{id: "page", class: "off-canvas slide-nav"}
   =render 'header_nav'
   =render 'side_nav'
-  .main-body
+  %section.main-body{ :role => "main" }
     - if flash.notice
       .row
         .samll-11.large-centered.columns

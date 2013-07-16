@@ -14,6 +14,7 @@
 //= require handlebars
 //= require jquery.carouFredSel-6.2.1.js
 //= require map
+//= require jquery.offcanvas.js
 //= require_tree .
 
 $(document).foundation();
