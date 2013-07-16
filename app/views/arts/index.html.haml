@@ -46,9 +46,9 @@
 
       google.maps.event.addListener(marker, 'click', function() {
         populateSideBar(this.art_id);
-        resetMarkerIcons();
+        resetMarkerIcons(marker.pinImage);
         saveIconState(this);
-        this.setIcon(pinImage2);
+        this.setIcon(marker.pinImage2);
       });
 
       var files = [];

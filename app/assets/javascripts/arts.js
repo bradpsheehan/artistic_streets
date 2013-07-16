@@ -22,7 +22,7 @@ var populateSideBar = function(art_id) {
     $('.side-nav').append(sideBarHTML);
     $("#carousel").carouFredSel({
         auto : false,
-        items: { minimum: 1, start: "random", width: 200, height: 200 },
+        items: { minimum: 1, visible: "variable", start: "random", width: 200, height: 200 },
         prev : "#art-prev",
         next : "#art-next"
     });
