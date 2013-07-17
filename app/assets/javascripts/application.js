@@ -13,6 +13,7 @@
 //= require foundation
 //= require handlebars
 //= require jquery.carouFredSel-6.2.1.js
+//= require masonry.pkgd.min.js
 //= require map
 //= require_tree .
 
