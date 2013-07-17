@@ -27,17 +27,30 @@ var populateSideBar = function(art_id) {
     $("#carousel").carouFredSel(
       {
         auto : false,
+        circular: false,
+        infinite: false,
         width: '100%',
         align: 'center',
         items: { 
                   minimum: 1,
                   visible: 'variable',
-                  start: "random",
                   width: 300,
                   height: 225
                   },
-        prev : "#art-prev",
-        next : "#art-next"
-      });
+        prev : { 
+                button: '#art-prev',
+                key: 'left',
+               },
+        next : {
+                button: '#art-next',
+                key: 'right'
+               }
+    });
+    //if only one image, hide the prev/next buttons
+    // debugger
+      var count = data.images.length;
+    if (count === 1) {
+      $('div #carousel-buttons').hide();
+    }
   });
 }
