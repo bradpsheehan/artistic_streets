@@ -15,7 +15,7 @@
   .large-6.columns
     =link_to "#{t('nav.gallery')}", '#' , class: "custom-button", id: "activate-gallery"
   .large-6.columns
-    =link_to "#{t('nav.map')}", '#', class: "custom-button"
+    =link_to "#{t('nav.map')}", '#', class: "custom-button", id: 'activate-map'
 
 
 #myModal.reveal-modal
@@ -47,10 +47,6 @@
       %a.next.custom-button#art-next{ :href => "#"} next
 
 :javascript
-//set gallery height to same as map canvas
-//leave search bar for filtering later?
-//activate setting for map button
-
   $('.gallery').hide();
   $('#activate-gallery').on('click', function(){
     $('#map_canvas').hide();
@@ -63,6 +59,10 @@
     });
   });
 
+  $('#activate-map').on('click', function(){
+    $('.gallery').hide();
+    $('#map_canvas').show();
+  });
 
  
 :javascript
