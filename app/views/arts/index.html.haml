@@ -42,9 +42,9 @@
     #carousel-buttons
       %a.prev.custom-button#art-prev{ :href => "#"} prev
       %a.next.custom-button#art-next{ :href => "#"} next
- 
-  
+
 :javascript
+
   var map;
   var geocoder;
 
@@ -85,6 +85,7 @@
       var marker = new google.maps.Marker({
            position: new google.maps.LatLng(art.lat, art.long),
            map: map,
+           url: "#sidebar",
            icon: pinImage,
            shadow: pinShadow,
            title: art.title,
@@ -99,13 +100,22 @@
         resetMarkerIcons();
         saveIconState(this);
         this.setIcon(pinImage2);
+        if(window.innerWidth < 768) {
+          $('.off-canvas').addClass("off-canvas active");
+          $('#sidebar').append("<a id='sidebarButton' class='sidebar-button custom-button-small' style='float: right;' href='#sidebar'>< <</a>");
+          $('#sidebarButton').on('click', function() {
+            console.log(this);
+            $('body').toggleClass('active');
+          });
+        }
       });
+
 
       var files = [];
       markersArray.push(marker)
     }
-    function resetMarkerIcons() { for (var i = 0; i < markersArray.length; i++) { markersArray[i].setIcon(pinImage); } }
-    function saveIconState(marker) { clickedMarkerTitle = marker.title; }
+    function resetMarkerIcons() { for (var i = 0; i < markersArray.length; i++) { markersArray[i].setIcon(pinImage); } };
+    function saveIconState(marker) { clickedMarkerTitle = marker.title; };
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);

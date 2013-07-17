@@ -4,7 +4,6 @@ $('#go-to-address').click(function() {
   return false;
 });
 
-
 var populateSideBar = function(art_id) {
   //first clear sidebar if theres nothing in it
   $('.side-nav').empty();
@@ -41,3 +40,7 @@ var populateSideBar = function(art_id) {
       });
   });
 }
+
+var showSidebar = function() {
+  $(document).addClass("off-canvas active");
+};
