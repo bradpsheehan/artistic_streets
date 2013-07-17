@@ -8,9 +8,12 @@
 .row
   .large-12.large-centered.columns
     #map_canvas
+    .gallery
+      -@images.each do |image|
+        = image_tag image.url(:medium), class: 'image-item'
 .row
   .large-6.columns
-    =link_to "#{t('nav.gallery')}", gallery_path , class: "custom-button", id: "gallery"
+    =link_to "#{t('nav.gallery')}", '#' , class: "custom-button", id: "activate-gallery"
   .large-6.columns
     =link_to "#{t('nav.map')}", '#', class: "custom-button"
 
@@ -42,8 +45,26 @@
     #carousel-buttons
       %a.prev.custom-button#art-prev{ :href => "#"} prev
       %a.next.custom-button#art-next{ :href => "#"} next
+
+:javascript
+//set gallery height to same as map canvas
+//leave search bar for filtering later?
+//activate setting for map button
+
+  $('.gallery').hide();
+  $('#activate-gallery').on('click', function(){
+    $('#map_canvas').hide();
+    $('.gallery').show();
+        
+    var $container = $('.gallery');
+    $container.masonry();
+    $container.imagesLoaded( function() {
+      $container.masonry();
+    });
+  });
+
+
  
-  
 :javascript
   var map;
   var geocoder;
