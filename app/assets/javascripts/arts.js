@@ -6,7 +6,6 @@ $('#go-to-address').click(function() {
 
 
 var populateSideBar = function(art_id) {
-  //first clear sidebar if theres nothing in it
   $('.side-nav').empty();
 
   var url = '/arts/'+ art_id + '.json';
@@ -46,11 +45,6 @@ var populateSideBar = function(art_id) {
                 key: 'right'
                }
     });
-    //if only one image, hide the prev/next buttons
-    // debugger
-      var count = data.images.length;
-    if (count === 1) {
-      $('div #carousel-buttons').hide();
-    }
+    if (data.images.length === 1) { $('div #carousel-buttons').hide(); }
   });
 }
