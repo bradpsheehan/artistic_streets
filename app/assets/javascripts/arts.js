@@ -1,4 +1,10 @@
-$('#go-to-address').click(function() {
+$('#address').keydown(function(event){    
+    if(event.keyCode==13){
+       $('#go-to-address').trigger('click');
+    }
+});
+
+$('#go-to-address').on('click', function() {
   var address = $('#address').val();
   centerMap(address);
   return false;
