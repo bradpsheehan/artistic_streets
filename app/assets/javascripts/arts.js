@@ -34,7 +34,7 @@ var populateSideBar = function(art_id) {
                   visible: 'variable',
                   start: "random",
                   width: 300,
-                  height: 'variable'
+                  height: 225
                   },
         prev : "#art-prev",
         next : "#art-next"

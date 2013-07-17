@@ -3,3 +3,48 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+// Image Carousel in Side Nav Bar:
+
+.image_carousel {
+  border: 1px solid lightgray;
+  overflow: hidden;
+  min-height: 300px;
+  margin: 0 auto;
+}
+
+#carousel {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  overflow: hidden;
+}
+
+.clearfix { float: none; clear: both; }
+
+a#art-prev, a#art-next { 
+  width: 25%;
+  padding: 5px;
+  margin: 5px;
+  position: absolute;
+}
+
+a#art-next { right: 1%; }
+
+#carousel-buttons {
+  width: 100%;
+  text-align: center;
+}
+
+a#art-prev:hover { background-position: 0 -50px; }
+a#art-next:hover { background-position: -50px -50px; }
+
+h5#add-photo-form { width: 100%; text-align: center; }
+
+#add-photo-form {
+  border: 3px solid #999;
+  width: 100%;
+  float: left;
+  margin: 3px;
+  margin-left: auto;
+  margin-right: auto;
+}
