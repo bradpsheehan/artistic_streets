@@ -1139,16 +1139,26 @@ h3 {
 #address {
   height: 43px;
 }
-.image-tile {
-  background-color: white;
-  height: 300px;
-  width: 300px;
-  margin-bottom: 25px;
- img { 
-   position:absolute;
-   clip:rect(0px,300px,300px,0px);
-  }
+
+//
+// Gallery
+//
+.gallery{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;  
 }
+
+.image-item{
+  width: 200px;
+  margin: 10px;
+  border: 7px solid #777;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+
+
 
 //
 // Image Carousel in Side Nav Bar:
