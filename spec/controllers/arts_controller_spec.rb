@@ -1,14 +1,32 @@
 require 'spec_helper'
 
 describe ArtsController do
-  describe 'PUT#update' do
-    it 'updates an art object with an added image' do
-      
-      #stub the image creation process
-      art = Art.create(title: 'hello', artist: 'someone', location_attributes: {} )
-      art.should_receive(:update_attributes)
+  describe 'GET#index' do
+    it 'assigns the arts variable' do
+      art = Art.create(title: 'testing', comment: 'testing', artist:'testing', location_attributes: {} )
+      get :index
+      expect(assigns(:arts)).to eq([art])
+    end
+  end
 
-        put :update, id: art.id, image:{}
+  describe 'GET#show' do
+    it 'returns json for a particular piece of art' do
+      pending 
+      # art
+      # get :show
+      # expect(response)...... to render json with image list
+    end
+  end
+
+  describe 'POST#create' do
+  end
+  
+  describe 'GET#count' do
+    it 'returns a count of all the art' do
+      pending
+      # art = Art.create(title: 'testing', comment: 'testing', artist:'testing', location_attributes: {} )
+      # get :count
+      # expect(response).to be "{'count': '1'}"
     end
   end
 end
