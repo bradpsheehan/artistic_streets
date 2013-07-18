@@ -1,4 +1,4 @@
-$('#address').keydown(function(event){    
+$('#address').keydown(function(event){
     if(event.keyCode==13){
        $('#go-to-address').trigger('click');
     }
@@ -35,13 +35,13 @@ var populateSideBar = function(art_id) {
         infinite: false,
         width: '100%',
         align: 'center',
-        items: { 
+        items: {
                   minimum: 1,
                   visible: 'variable',
                   width: 300,
                   height: 225
                   },
-        prev : { 
+        prev : {
                 button: '#art-prev',
                 key: 'left',
                },
@@ -50,7 +50,7 @@ var populateSideBar = function(art_id) {
                 key: 'right'
                }
     });
-    if (data.images.length === 1) { $('div #carousel-buttons').hide(); }
+    // if (data.images.length === 1) { $('div #carousel-buttons').hide(); }
   });
 }
 
