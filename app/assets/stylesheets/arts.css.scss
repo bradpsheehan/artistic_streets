@@ -19,7 +19,10 @@
   overflow: hidden;
 }
 
-.clearfix { float: none; clear: both; }
+.clearfix {
+float: none;
+clear: both;
+}
 
 a#art-prev, a#art-next {
   width: 25%;
@@ -30,12 +33,22 @@ a#art-prev, a#art-next {
 
 a#art-next { right: 1%; }
 
-#carousel-buttons { width: 100%; text-align: center; }
+#carousel-buttons {
+  width: 100%;
+  text-align: center;
+  margin-botton: 20px;
+}
 
-a#art-prev:hover { background-position: 0 -50px; }
-a#art-next:hover { background-position: -50px -50px; }
+a#art-prev:hover {
+  background-position: 0 -50px;
+}
+a#art-next:hover {
+  background-position: -50px -50px;
+}
 
-h5#add-photo-form { width: 100%; text-align: center; }
+h5#add-photo-form {
+  width: 100%; text-align: center;
+}
 
 #add-photo-form {
   width: 100%;

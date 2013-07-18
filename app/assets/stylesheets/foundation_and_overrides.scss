@@ -1067,6 +1067,12 @@ h3 {
   height: 600px !important;
   width: 1000px !important;
 }
+@media only screen and (max-width: 767px) {
+  #map_canvas, .gallery {
+  height: 250px;
+  width: 100%
+  }
+}
 #map_canvas, .gallery {
   height: 550px;
   width: 100%;
