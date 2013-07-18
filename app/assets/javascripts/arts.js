@@ -1,4 +1,10 @@
-$('#go-to-address').click(function() {
+$('#address').keydown(function(event){    
+    if(event.keyCode==13){
+       $('#go-to-address').trigger('click');
+    }
+});
+
+$('#go-to-address').on('click', function() {
   var address = $('#address').val();
   centerMap(address);
   return false;
@@ -6,7 +12,6 @@ $('#go-to-address').click(function() {
 
 
 var populateSideBar = function(art_id) {
-  //first clear sidebar if theres nothing in it
   $('.side-nav').empty();
 
   var url = '/arts/'+ art_id + '.json';
@@ -27,17 +32,25 @@ var populateSideBar = function(art_id) {
     $("#carousel").carouFredSel(
       {
         auto : false,
+        circular: false,
+        infinite: false,
         width: '100%',
         align: 'center',
         items: { 
                   minimum: 1,
                   visible: 'variable',
-                  start: "random",
                   width: 300,
-                  height: 'variable'
+                  height: 225
                   },
-        prev : "#art-prev",
-        next : "#art-next"
-      });
+        prev : { 
+                button: '#art-prev',
+                key: 'left',
+               },
+        next : {
+                button: '#art-next',
+                key: 'right'
+               }
+    });
+    if (data.images.length === 1) { $('div #carousel-buttons').hide(); }
   });
 }
