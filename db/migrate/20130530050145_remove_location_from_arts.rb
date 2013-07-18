@@ -1,6 +1,6 @@
 class RemoveLocationFromArts < ActiveRecord::Migration
   def change
-    remove_column :arts, :location, :string
+    remove_column :arts, :location
   end
 end
   
