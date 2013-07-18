@@ -51,7 +51,7 @@
   $('#activate-gallery').on('click', function(){
     $('#map_canvas').hide();
     $('.gallery').show();
-        
+
     var $container = $('.gallery');
     $container.masonry();
     $container.imagesLoaded( function() {
@@ -63,7 +63,7 @@
     $('.gallery').hide();
     $('#map_canvas').show();
   });
- 
+
 :javascript
 
   var map;
@@ -123,9 +123,9 @@
         this.setIcon(pinImage2);
         if(window.innerWidth < 768) {
           $('.off-canvas').addClass("off-canvas active");
+          $('#sidebarButton').remove();
           $('#sidebar').append("<a id='sidebarButton' class='sidebar-button custom-button-small' style='float: right;' href='#sidebar'>< <</a>");
           $('#sidebarButton').on('click', function() {
-            console.log(this);
             $('body').toggleClass('active');
           });
         }
