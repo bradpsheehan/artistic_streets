@@ -2,17 +2,20 @@
   .large-9.columns
     = text_field_tag 'location', nil, placeholder: "#{t('placeholders.map_search')}", id: "address"
   .large-3.columns
-    = link_to "FIND", "#", id: "go-to-address", class: "custom-button"
+    = link_to "#{t('nav.find')}", "#", id: "go-to-address", class: "custom-button"
     %br/
 
 .row
   .large-12.large-centered.columns
     #map_canvas
+    .gallery
+      -@images.each do |image|
+        = image_tag image.url(:medium), class: 'image-item'
 .row
   .large-6.columns
-    =link_to "Gallery", '#', class: "custom-button", id: "gallery"
+    =link_to "#{t('nav.gallery')}", '#' , class: "custom-button", id: "activate-gallery"
   .large-6.columns
-    =link_to "Map", '#', class: "custom-button"
+    =link_to "#{t('nav.map')}", '#', class: "custom-button", id: 'activate-map'
 
 
 #myModal.reveal-modal
@@ -22,16 +25,16 @@
 
 %script#sidebar-template{:type => "text/x-handlebars-template"}
   %h4
-    %em Title:
+    %em #{t('headings.art_title')}
     {{ art.title }}
   %h5
-    %em Artist:
+    %em #{t('headings.art_artist')}
     {{ art.artist }}
   %p#art-comment
-    %em Comment:
+    %em #{t('headings.art_comment')}
     {{ art.comment }}
   #add-photo-form
-    %h5 Add A Photo:
+    %h5 #{t('headings.add_photo')}
     %form{ enctype: 'multipart/form-data', method: 'post', action: '/images'}
       %input#add-photo-image{ type:'file', name:'image' }
       %input#add-photo-artid{ type:'hidden', name:'art_id', value:'{{ art.id }}' }
@@ -43,6 +46,24 @@
       %a.prev.custom-button#art-prev{ :href => "#"} prev
       %a.next.custom-button#art-next{ :href => "#"} next
 
+:javascript
+  $('.gallery').hide();
+  $('#activate-gallery').on('click', function(){
+    $('#map_canvas').hide();
+    $('.gallery').show();
+        
+    var $container = $('.gallery');
+    $container.masonry();
+    $container.imagesLoaded( function() {
+      $container.masonry();
+    });
+  });
+
+  $('#activate-map').on('click', function(){
+    $('.gallery').hide();
+    $('#map_canvas').show();
+  });
+ 
 :javascript
 
   var map;
@@ -109,7 +130,6 @@
           });
         }
       });
-
 
       var files = [];
       markersArray.push(marker)

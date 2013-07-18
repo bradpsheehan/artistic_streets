@@ -4,11 +4,18 @@ en:
     contribute_to_the_doc: 'Contribute to the Documentary'
     discover_art: 'Discover Art'
     art_title: 'Title:'
+    art_comment: 'Comment:'
+    art_artist: 'Artist:'
+    add_photo: 'Add A Photo:'
     landing_tagline: "Uncover a Sense of Place..."
     landing_description: "Document & Discover public art in your community and around the world!"
   nav:
     discover: 'Discover'
     contribute: 'Contribute'
+    language: 'Language'
+    gallery: 'Gallery'
+    map: 'Map'
+    find: 'FIND'
   placeholders:
     art_title: 'Title of Art (if known)'
     artist_name: 'Artist (if known)'

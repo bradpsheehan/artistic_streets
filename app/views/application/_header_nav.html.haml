@@ -15,10 +15,10 @@
             =link_to "#{t('nav.discover')}", arts_path
           %li.divider
           %li
-            %a{"data-reveal-id" => "myModal", :href => "#"} Contribute
+            %a{"data-reveal-id" => "myModal", :href => "#"} #{t('nav.contribute')}
           %li.divider
           %li.has-dropdown
-            %a{:href => "#"} Language
+            %a{:href => "#"} #{t('nav.language')}
             %ul.dropdown
               %li
                 =link_to "English", i18n_path(locale: 'en')

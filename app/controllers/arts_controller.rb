@@ -1,6 +1,8 @@
 class ArtsController < ApplicationController
 
   def index
+    @images = Image.all
+
     @art = Art.new
     @art.build_location
 

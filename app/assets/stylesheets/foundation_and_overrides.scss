@@ -1067,10 +1067,14 @@ h3 {
   height: 600px !important;
   width: 1000px !important;
 }
-#map_canvas {
+#map_canvas, .gallery {
   height: 550px;
   width: 100%;
 }
+.gallery {
+  min-height: 550px;
+}
+
 #wrap {
   min-height: 100%;
 }
@@ -1140,6 +1144,26 @@ h3 {
 #address {
   height: 43px;
 }
+//
+// Gallery
+//
+.gallery{
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;  
+}
+
+.image-item{
+  width: 200px;
+  margin: 10px;
+  border: 7px solid #777;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  border-radius: 15px;
+}
+//
+// Image Carousel in Side Nav Bar:
+//
 .image-tile {
   background-color: white;
   height: 300px;
@@ -1150,12 +1174,9 @@ h3 {
    clip:rect(0px,300px,300px,0px);
   }
 }
-
 //
 // Image Carousel in Side Nav Bar:
 //
-
-
 .image_carousel {
   border: 1px solid lightgray;
   overflow: hidden;
@@ -1211,7 +1232,6 @@ h5#add-photo-form{
   margin-left: auto;
   margin-right: auto;
 }
-
 
 /* Off canvas layout CSS/JS provided by or adapted from work by Jason Weaver and Luke Wroblewski Requires globals.css grid.css */
 

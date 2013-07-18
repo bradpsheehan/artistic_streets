@@ -3,11 +3,19 @@ es:
   headings:
     contribute_to_the_doc: 'Contribuir al Documental'
     discover_art: 'Descubrir el Arte'
+    art_title: 'Titulo:'
+    art_comment: 'Observacion:'
+    art_artist: 'Artista:'
+    add_photo: 'Sube tus fotos:'
     landing_tagline: 'Descubre un sentido de lugar ...'
     landing_description: 'Documentar y descubrir el arte público en su comunidad y en todo el mundo!'
   nav:
     discover: 'Descubrir'
     contribute: 'Contribuir'
+    language: 'Lenguaje'
+    gallery: 'Galeria'
+    map: 'Map'
+    find: 'BUSCAR'
   placeholders:
     art_title: 'Título de Arte (si se conoce)'
     artist_name: 'Artista (si se conoce)'
