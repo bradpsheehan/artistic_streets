@@ -124,7 +124,7 @@
         if(window.innerWidth < 768) {
           $('.off-canvas').addClass("off-canvas active");
           $('#sidebarButton').remove();
-          $('#sidebar').append("<a id='sidebarButton' class='sidebar-button custom-button-small' style='float: right;' href='#sidebar'>< <</a>");
+          $('.close-sidebar').append("<a id='sidebarButton' class='sidebar-button custom-button-small' href='#sidebar'>< <</a>");
           $('#sidebarButton').on('click', function() {
             $('body').toggleClass('active');
           });
