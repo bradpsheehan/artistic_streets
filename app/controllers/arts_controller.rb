@@ -2,12 +2,12 @@ class ArtsController < ApplicationController
 
   def index
     @images = Image.all
-
     @art = Art.new
     @art.build_location
+    @new_art = Art.order("created_at").last
 
     if params[:new_art]
-      @art = Art.find(params[:new_art])
+      @art = Art.find(params[:new_art])      
       @center_point = {
                         lat: @art.location.latitude,
                         long: @art.location.longitude
@@ -29,7 +29,7 @@ class ArtsController < ApplicationController
 
     if @art.save
       flash.notice = "Thank you for contributing!"
-      redirect_to arts_path(new_art: @art.id)
+      redirect_to arts_path(:new_art => @art.id)
     else
       render 'new'
     end

@@ -20,3 +20,7 @@
       %br/
       =f.submit "#{t('buttons.submit')}", class:"custom-button"
 
+:javascript
+  $('#myModal form').attr('class', 'new_art').attr('id', 'new_art').attr('action', '/arts');
+  $('#myModal form input[type=text]').each(function(){this.value = ""});
+  document.URL = window.location.pathname

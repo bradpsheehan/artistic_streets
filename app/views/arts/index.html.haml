@@ -133,7 +133,9 @@
 
       var files = [];
       markersArray.push(marker)
-    }
+    };
+    var markerCluster = new MarkerClusterer(map, markersArray);
+
     function resetMarkerIcons() { for (var i = 0; i < markersArray.length; i++) { markersArray[i].setIcon(pinImage); } };
     function saveIconState(marker) { clickedMarkerTitle = marker.title; };
   }
