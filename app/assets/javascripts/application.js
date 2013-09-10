@@ -17,5 +17,6 @@
 //= require masonry.pkgd.min.js
 //= require map
 //= require jquery.offcanvas.js
+//= require arts.js
 
 $(document).foundation();
