@@ -15,8 +15,8 @@ screen_shot_infowind.png: screen_shot_infowind-42ec0e84f9d5f015685fd1bf717ecb70.
 screen_shot_infowind/index.png: screen_shot_infowind-42ec0e84f9d5f015685fd1bf717ecb70.png
 screen_shot_map.png: screen_shot_map-fbea1a55ea61280e4ee606ef85da0562.png
 screen_shot_map/index.png: screen_shot_map-fbea1a55ea61280e4ee606ef85da0562.png
-application.js: application-da6a618034fd91fd7999229407794012.js
-application/index.js: application-da6a618034fd91fd7999229407794012.js
+application.js: application-b2dd2bed57201a7f07ae3ebf5ef52126.js
+application/index.js: application-b2dd2bed57201a7f07ae3ebf5ef52126.js
 application.css: application-2ef3063656b6992de0665f1620d8a207.css
 application/index.css: application-2ef3063656b6992de0665f1620d8a207.css
 jquery.min.map: jquery.min-6c267bfd2b3f36e6edccb2e584934c1c.map
