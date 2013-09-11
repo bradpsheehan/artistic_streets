@@ -14,9 +14,9 @@
   %title= content_for?(:title) ? yield(:title) : "Artistic Streets"
 
   = stylesheet_link_tag "application"
-  = javascript_include_tag "vendor/custom.modernizr", "http://code.jquery.com/jquery-1.10.0.min.js", "markerclusterer.js"
+  %script{:src => "http://maps.google.com/maps/api/js?sensor=true", :type => "text/javascript"}
+  = javascript_include_tag "vendor/custom.modernizr", "http://code.jquery.com/jquery-1.10.0.min.js", "markerclusterer.js", "geo_location_marker.js"
   = csrf_meta_tag
-  %script{:src => "http://maps.google.com/maps/api/js?sensor=false", :type => "text/javascript"}
 
 %body{id: "page", class: "off-canvas slide-nav"}
   =render 'header_nav'
