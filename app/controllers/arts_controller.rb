@@ -1,7 +1,7 @@
 class ArtsController < ApplicationController
 
   def index
-    @images = Image.limit(2)
+    @images = Image.all
     @arts = Art.all
     @art = Art.new
     @art.build_location
