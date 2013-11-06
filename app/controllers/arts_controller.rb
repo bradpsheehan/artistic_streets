@@ -1,21 +1,11 @@
 class ArtsController < ApplicationController
 
   def index
-    @images = Image.all
+    @images = Image.limit(2)
+    @arts = Art.all
     @art = Art.new
     @art.build_location
-    @new_art = Art.order("created_at").last
-
-    if params[:new_art]
-      @art = Art.find(params[:new_art])      
-      @center_point = {
-                        lat: @art.location.latitude,
-                        long: @art.location.longitude
-                      }
-    else
-      @center_point = { lat: 42.3583, long: -71.0603 }
-    end
-    @arts = Art.all
+    @center_point = new_art_or_boston_center_point
   end
 
   def show
@@ -38,5 +28,27 @@ class ArtsController < ApplicationController
   def count
     @count = Art.all.count
     render json:{count: @count}
+  end
+
+  private
+
+  def should_center_map_on_new_art?
+    params[:new_art].present?
+  end
+
+  def new_art_or_boston_center_point
+    if should_center_map_on_new_art?
+      center_point_of_new_art
+    else
+      @center_point = { lat: 42.3583, long: -71.0603 }
+    end
+  end
+
+  def center_point_of_new_art
+    new_art = Art.find(params[:new_art])
+    {
+      lat: new_art.location.latitude,
+      long: new_art.location.longitude
+    }
   end
 end
