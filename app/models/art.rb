@@ -32,13 +32,15 @@ class Art < ActiveRecord::Base
   end
 
   def self.create_art_with_location_and_image(params)
-   art = Art.new( 
+   art = Art.new(
                   title: params[:title],
                   artist: params[:artist],
                   comment: params[:comment]
                 )
    art.build_location(params[:location_attributes])
-   art.images.new(params[:image])
+   unless params[:image] ==  nil
+     art.images.new(params[:image])
+   end
    art.save
    art
   end
