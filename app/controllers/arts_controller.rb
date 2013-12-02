@@ -5,7 +5,7 @@ class ArtsController < ApplicationController
     @arts = Art.all
     @art = Art.new
     @art.build_location
-    @center_point = new_art_or_boston_center_point
+    @center_point = new_art_or_united_states_center_point
   end
 
   def show
@@ -36,11 +36,11 @@ class ArtsController < ApplicationController
     params[:new_art].present?
   end
 
-  def new_art_or_boston_center_point
+  def new_art_or_united_states_center_point
     if should_center_map_on_new_art?
       center_point_of_new_art
     else
-      @center_point = { lat: 42.3583, long: -71.0603 }
+      @center_point = { lat: 40.0000, long: -100.0000 }
     end
   end
 
