@@ -6,6 +6,7 @@ class ArtsController < ApplicationController
     @art = Art.new
     @art.build_location
     @center_point = new_art_or_united_states_center_point
+    @zoom_level = new_art_or_united_states_zoom_level
   end
 
   def show
@@ -32,12 +33,28 @@ class ArtsController < ApplicationController
 
   private
 
-  def should_center_map_on_new_art?
+  def new_art_present?
     params[:new_art].present?
   end
 
+  def new_art_or_united_states_zoom_level
+    if new_art_present?
+      new_art_zoom_level
+    else
+      @zoom_level = united_states_zoom_level
+    end
+  end
+
+  def new_art_zoom_level
+    13
+  end
+
+  def united_states_zoom_level
+    4
+  end
+
   def new_art_or_united_states_center_point
-    if should_center_map_on_new_art?
+    if new_art_present?
       center_point_of_new_art
     else
       @center_point = { lat: 40.0000, long: -100.0000 }

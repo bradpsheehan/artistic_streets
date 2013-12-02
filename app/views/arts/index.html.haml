@@ -75,7 +75,7 @@
 
     var myLatlng = new google.maps.LatLng(#{@center_point[:lat]}, #{@center_point[:long]})
     var mapOptions = {
-      zoom: 4,
+      zoom: #{@zoom_level},
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
