@@ -14,5 +14,5 @@ ArtisticStreets::Application.routes.draw do
   resources :arts, only: [:index, :show, :create]
   resources :images, only: [:create]
   
-  root :to => 'application#landing_page'
+  root :to => 'arts#index'
 end
