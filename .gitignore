@@ -19,4 +19,5 @@ coverage/
 coverage
 
 #Ignore credentials file
+/config/s3.yml
 .env
