@@ -1,0 +1,5 @@
+.row
+  .large-12.large-centered.columns
+    .gallery
+      -@images.each do |image|
+        = image_tag image.url(:medium), class: 'image-item'

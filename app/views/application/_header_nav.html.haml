@@ -12,7 +12,10 @@
         %li.divider
         - if !( params[:controller] == 'arts' && params[:action] == 'landing_page' ) # show_header_links?
           %li
-            =link_to "#{t('nav.discover')}", arts_path
+            =link_to "#{t('nav.map')}", arts_path
+          %li.divider
+          %li
+            =link_to "#{t('nav.gallery')}", gallery_path
           %li.divider
           %li
             %a#contribute{"data-reveal-id" => "myModal", :href => "#"} #{t('nav.contribute')}

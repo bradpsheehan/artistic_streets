@@ -1,7 +1,6 @@
 class ArtsController < ApplicationController
 
   def index
-    @images = Image.order("created_at DESC")
     @arts = Art.all
     @art = Art.new
     @art.build_location

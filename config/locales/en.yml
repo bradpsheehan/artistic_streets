@@ -10,7 +10,8 @@ en:
     landing_tagline: "Uncover a Sense of Place..."
     landing_description: "Document & Discover public art in your community and around the world!"
   nav:
-    discover: 'Discover'
+    map: 'Map'
+    gallery: 'Gallery'
     contribute: 'Contribute'
     language: 'Language'
     gallery: 'Gallery'
