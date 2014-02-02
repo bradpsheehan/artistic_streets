@@ -8,15 +8,6 @@
 .row
   .large-12.large-centered.columns
     #map_canvas
-    .gallery
-      -@images.each do |image|
-        = image_tag image.url(:medium), class: 'image-item'
-.row
-  .large-6.columns
-    =link_to "#{t('nav.gallery')}", '#' , class: "custom-button", id: "activate-gallery"
-  .large-6.columns
-    =link_to "#{t('nav.map')}", '#', class: "custom-button", id: 'activate-map'
-
 
 #myModal.reveal-modal
   =render template: "arts/new"
@@ -47,11 +38,6 @@
       %a.next.custom-button#art-next{ :href => "#"} next
 
 :javascript
-  $('.gallery').hide();
-  $('#activate-gallery').on('click', function(){
-    $('#map_canvas').hide();
-    $('.gallery').show();
-
     var $container = $('.gallery');
     $container.masonry();
     $container.imagesLoaded( function() {
@@ -59,13 +45,7 @@
     });
   });
 
-  $('#activate-map').on('click', function(){
-    $('.gallery').hide();
-    $('#map_canvas').show();
-  });
-
 :javascript
-
   var map;
   var geocoder;
 
