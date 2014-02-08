@@ -1,9 +1,9 @@
 <div class="row">
   <div class="large-9 columns">
-    <%= text_field_tag 'location', nil, placeholder: "#{t('placeholders.map_search')}", id: "address" %>
+    <%= text_field_tag 'location', nil, placeholder: t('placeholders.map_search'), id: "address" %>
   </div>
   <div class="large-3 columns">
-    <%= link_to "#{t('nav.find')}", "#", id: "go-to-address", class: "custom-button" %>
+    <%= link_to t('nav.find'), "#", id: "go-to-address", class: "custom-button" %>
     <br/>
   </div>
 </div>
@@ -18,19 +18,19 @@
 </div>
 <script id="sidebar-template" type="text/x-handlebars-template">
   <h4>
-    <em>#{t('headings.art_title')}</em>
+    <em><%= t('headings.art_title') %></em>
     {{ art.title }}
   </h4>
   <h5>
-    <em>#{t('headings.art_artist')}</em>
+    <em><%= t('headings.art_artist') %></em>
     {{ art.artist }}
   </h5>
   <p id="art-comment">
-    <em>#{t('headings.art_comment')}</em>
+    <em><%= t('headings.art_comment') %></em>
     {{ art.comment }}
   </p>
   <div id="add-photo-form">
-    <h5>#{t('headings.add_photo')}</h5>
+    <h5><%= t('headings.add_photo') %></h5>
     <form action="/images" enctype="multipart/form-data" method="post">
       <input id="add-photo-image" name="image" type="file"></input>
       <input id="add-photo-artid" name="art_id" type="hidden" value="{{ art.id }}"></input>
@@ -52,7 +52,7 @@
   var geocoder;
 
   function initialize() {
-    var artObjects = <%= art_objects(@arts).to_json %>;
+    var artObjects = <%= art_objects(@arts).to_json.html_safe %>;
     geocoder = new google.maps.Geocoder();
 
     var mapCenterLat = <%= @center_point[:lat] %>;
