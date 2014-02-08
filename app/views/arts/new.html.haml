@@ -22,19 +22,14 @@
       =f.submit "#{t('buttons.submit')}", class:"custom-button"
 
 :javascript
-  getLocation();
   function getLocation() {
     if (navigator.geolocation)
       { navigator.geolocation.watchPosition(showPosition); }
     else
     { x.innerHTML="Geolocation is not supported by this browser."; }
-  };
+  }
   function showPosition(position) {
     $("#art_location_attributes_address").val(position.coords.latitude + "," + position.coords.longitude);
-  };
+  }
 
-
-:javascript
-  $('#myModal form').attr('class', 'new_art').attr('id', 'new_art').attr('action', '/arts');
-  $('#myModal form input[type=text]').each(function(){this.value = ""});
-  document.URL = window.location.pathname
+  getLocation();
