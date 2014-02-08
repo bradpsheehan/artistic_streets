@@ -1,0 +1,31 @@
+<div class="row">
+  <div class="large-11 larg-centered columns">
+    <h2 class="pull-left">
+      <%= t('headings.landing_tagline') %>
+    </h2>
+  </div>
+</div>
+<div id="landing-hero"></div>
+<div class="row">
+  <div class="large-11 larg-centered columns" id="landing-bottom-content">
+    <h4>
+      <%= t('headings.landing_description') %>
+    </h4>
+    <div id="art-count">
+      <h6>
+        Currently Curating
+        <span id="art-count-number"></span>
+        Works of Public Street Art and Counting...
+      </h6>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    var url = '/count.json'
+    $.getJSON(url, function(data){
+    $('#art-count-number').html(data.count);
+    });
+  });
+</script>

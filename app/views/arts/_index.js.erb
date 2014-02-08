@@ -1,61 +1,65 @@
-.row
-  .large-9.columns
-    = text_field_tag 'location', nil, placeholder: "#{t('placeholders.map_search')}", id: "address"
-  .large-3.columns
-    = link_to "#{t('nav.find')}", "#", id: "go-to-address", class: "custom-button"
-    %br/
-
-.row
-  .large-12.large-centered.columns
-    #map_canvas
-
-#myModal.reveal-modal
-  =render template: "arts/new"
-  %a.close-reveal-modal ×
-
-
-%script#sidebar-template{:type => "text/x-handlebars-template"}
-  %h4
-    %em #{t('headings.art_title')}
+<div class="row">
+  <div class="large-9 columns">
+    <%= text_field_tag 'location', nil, placeholder: t('placeholders.map_search'), id: "address" %>
+  </div>
+  <div class="large-3 columns">
+    <%= link_to t('nav.find'), "#", id: "go-to-address", class: "custom-button" %>
+    <br/>
+  </div>
+</div>
+<div class="row">
+  <div class="large-12 large-centered columns">
+    <div id="map_canvas"></div>
+  </div>
+</div>
+<div class="reveal-modal" id="myModal">
+  <%= render template: "arts/new" %>
+  <a class="close-reveal-modal">×</a>
+</div>
+<script id="sidebar-template" type="text/x-handlebars-template">
+  <h4>
+    <em><%= t('headings.art_title') %></em>
     {{ art.title }}
-  %h5
-    %em #{t('headings.art_artist')}
+  </h4>
+  <h5>
+    <em><%= t('headings.art_artist') %></em>
     {{ art.artist }}
-  %p#art-comment
-    %em #{t('headings.art_comment')}
+  </h5>
+  <p id="art-comment">
+    <em><%= t('headings.art_comment') %></em>
     {{ art.comment }}
-  #add-photo-form
-    %h5 #{t('headings.add_photo')}
-    %form{ enctype: 'multipart/form-data', method: 'post', action: '/images'}
-      %input#add-photo-image{ type:'file', name:'image' }
-      %input#add-photo-artid{ type:'hidden', name:'art_id', value:'{{ art.id }}' }
-      %input#add-photo{ type:'submit' }
-  .image_carousel
-    %ul#carousel
-    .clearfix
-    #carousel-buttons
-      %a.prev.custom-button#art-prev{ :href => "#"} prev
-      %a.next.custom-button#art-next{ :href => "#"} next
+  </p>
+  <div id="add-photo-form">
+    <h5><%= t('headings.add_photo') %></h5>
+    <form action="/images" enctype="multipart/form-data" method="post">
+      <input id="add-photo-image" name="image" type="file"></input>
+      <input id="add-photo-artid" name="art_id" type="hidden" value="{{ art.id }}"></input>
+      <input id="add-photo" type="submit"></input>
+    </form>
+  </div>
+  <div class="image_carousel">
+    <ul id="carousel"></ul>
+    <div class="clearfix"></div>
+    <div id="carousel-buttons">
+      <a class="prev custom-button" href="#" id="art-prev">prev</a>
+      <a class="next custom-button" href="#" id="art-next">next</a>
+    </div>
+  </div>
+</script>
 
-:javascript
-    var $container = $('.gallery');
-    $container.masonry();
-    $container.imagesLoaded( function() {
-      $container.masonry();
-    });
-  });
-
-:javascript
+<script>
   var map;
   var geocoder;
 
   function initialize() {
-    var artObjects = #{art_objects(@arts).to_json};
+    var artObjects = <%= art_objects(@arts).to_json.html_safe %>;
     geocoder = new google.maps.Geocoder();
 
-    var myLatlng = new google.maps.LatLng(#{@center_point[:lat]}, #{@center_point[:long]})
+    var mapCenterLat = <%= @center_point[:lat] %>;
+    var mapCenterLong = <%= @center_point[:long] %>;
+    var myLatlng = new google.maps.LatLng(mapCenterLat, mapCenterLong);
     var mapOptions = {
-      zoom: #{@zoom_level},
+      zoom: <%= @zoom_level %>,
       center: myLatlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP
     };
@@ -123,3 +127,5 @@
   }
 
   google.maps.event.addDomListener(window, 'load', initialize);
+
+</script>

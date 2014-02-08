@@ -1,0 +1,9 @@
+<div class="row">
+  <div class="large-12 large-centered columns">
+    <div class="gallery">
+      <% @images.each do |image| %>
+        <%= image_tag image.url(:medium), class: 'image-item' %>
+      <% end %>
+    </div>
+  </div>
+</div>
