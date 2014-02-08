@@ -1,0 +1,48 @@
+<div class="fixed">
+  <nav class="top-bar">
+    <ul class="title-area">
+      <li class="name">
+        <h1>
+          <%= link_to 'Artistic Streets', root_path %>
+        </h1>
+      </li>
+      <li class="toggle-topbar menu-icon">
+        <a href="#">
+          <span>Menu</span>
+        </a>
+      </li>
+    </ul>
+    <section class="top-bar-section">
+      <ul class="right">
+        <li class="divider"></li>
+        <% if !( params[:controller] == 'arts' && params[:action] == 'landing_page' ) # show_header_links? %>
+          <li>
+            <%= link_to "#{t('nav.map')}", arts_path %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <%= link_to "#{t('nav.gallery')}", gallery_path %>
+          </li>
+          <li class="divider"></li>
+          <li>
+            <a data-reveal-id="myModal" href="#" id="contribute">#{t('nav.contribute')}</a>
+          </li>
+          <li class="divider"></li>
+          <li class="has-dropdown">
+            <a href="#">#{t('nav.language')}</a>
+            <ul class="dropdown">
+              <li>
+                <%= link_to "English", i18n_path(locale: 'en') %>
+              </li>
+              <li>
+                <%= link_to "Español", i18n_path(locale: 'es') %>
+              </li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+          <li class="show-for-small"></li>
+        <% end %>
+      </ul>
+    </section>
+  </nav>
+</div>
