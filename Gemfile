@@ -5,8 +5,6 @@ gem 'rails', '3.2.13'
 
 gem 'jquery-rails'
 gem 'pg'
-gem 'haml'
-gem 'haml-rails'
 gem 'simple_form'
 gem 'unicorn'
 gem 'jquery-rails'

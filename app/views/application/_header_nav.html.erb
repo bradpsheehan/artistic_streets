@@ -17,19 +17,19 @@
         <li class="divider"></li>
         <% if !( params[:controller] == 'arts' && params[:action] == 'landing_page' ) # show_header_links? %>
           <li>
-            <%= link_to "#{t('nav.map')}", arts_path %>
+            <%= link_to t('nav.map'), arts_path %>
           </li>
           <li class="divider"></li>
           <li>
-            <%= link_to "#{t('nav.gallery')}", gallery_path %>
+            <%= link_to t('nav.gallery'), gallery_path %>
           </li>
           <li class="divider"></li>
           <li>
-            <a data-reveal-id="myModal" href="#" id="contribute">#{t('nav.contribute')}</a>
+            <a data-reveal-id="myModal" href="#" id="contribute"><%= t('nav.contribute') %></a>
           </li>
           <li class="divider"></li>
           <li class="has-dropdown">
-            <a href="#">#{t('nav.language')}</a>
+            <a href="#"><%= t('nav.language') %></a>
             <ul class="dropdown">
               <li>
                 <%= link_to "English", i18n_path(locale: 'en') %>
