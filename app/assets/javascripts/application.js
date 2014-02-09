@@ -11,12 +11,9 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
-//= require foundation
 //= require handlebars
 //= require jquery.carouFredSel-6.2.1.js
 //= require masonry.pkgd.min.js
 //= require map
 //= require jquery.offcanvas.js
 //= require arts.js
-
-$(document).foundation();
