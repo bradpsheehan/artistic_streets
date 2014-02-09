@@ -2,6 +2,8 @@ class ImagesController < ApplicationController
 
   def index
     @images = Image.order("created_at DESC")
+    @art = Art.new
+    @art.build_location
   end
 
   def create
