@@ -11,6 +11,7 @@
 // GO AFTER THE REQUIRES BELOW.
 //
 //= require jquery
+//= header_nav
 //= require handlebars
 //= require jquery.carouFredSel-6.2.1.js
 //= require masonry.pkgd.min.js

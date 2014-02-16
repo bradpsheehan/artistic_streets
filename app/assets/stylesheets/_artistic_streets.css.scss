@@ -46,12 +46,15 @@ h3 {
   width: 1000px !important;
 }
 @media only screen and (max-width: 767px) {
-  #map_canvas, .gallery {
+  #map, .gallery {
   height: 250px;
   width: 100%
   }
 }
-#map_canvas, .gallery {
+#map {
+  position: absolute;
+  top: 0;
+  left: 0;
   height: 550px;
   width: 100%;
 }
@@ -116,7 +119,6 @@ h3 {
 .main-body {
   width: 80%;
   float: right;
-  margin-top: 4.5%;
   margin-bottom: 20px;
 }
 .top-bar {

@@ -6,8 +6,9 @@
     <%= content_for?(:title) ? yield(:title) : "Artistic Streets" %>
   </title>
   <%= stylesheet_link_tag "application" %>
-  <script src="http://maps.google.com/maps/api/js?sensor=true" type="text/javascript"></script>
-  <%= javascript_include_tag "vendor/custom.modernizr", "http://code.jquery.com/jquery-1.10.0.min.js", "markerclusterer.js", "geo_location_marker.js" %>
+  <script src='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox.js/v1.6.1/mapbox.css' rel='stylesheet' />
+  <%= javascript_include_tag "http://code.jquery.com/jquery-1.10.0.min.js"%>
   <%= csrf_meta_tag %>
 </head>
 <body class="off-canvas slide-nav" id="page">
@@ -26,6 +27,6 @@
         </div>
       </div>
     <% end %>
-    <!--<%= yield %> -->
+    <%= yield %>
   </section>
 </body>
