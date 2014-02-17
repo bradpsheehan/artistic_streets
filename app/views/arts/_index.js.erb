@@ -1,37 +1,93 @@
 <div id="map"></div>
 
-<script>
+<div>
+  <a class="js-menu-trigger menu-anchor">Click for Sliding Menu</a>
+</div>
 
+<nav class="js-menu sliding-menu-content" id="sidebar">
+  <div class="side-content"></div>
+</nav>
+
+<script id="sidebar-template" type="text/x-handlebars-template">
+  <h4>
+    <em><%= t('headings.art_title') %></em>
+    {{ art.title }}
+  </h4>
+  <h5>
+    <em><%= t('headings.art_artist') %></em>
+    {{ art.artist }}
+  </h5>
+  <p id="art-comment">
+    <em><%= t('headings.art_comment') %></em>
+    {{ art.comment }}
+  </p>
+  <div id="add-photo-form">
+    <h5><%= t('headings.add_photo') %></h5>
+    <form action="/images" enctype="multipart/form-data" method="post">
+      <input id="add-photo-image" name="image" type="file"></input>
+      <input id="add-photo-artid" name="art_id" type="hidden" value="{{ art.id }}"></input>
+      <input id="add-photo" type="submit"></input>
+    </form>
+  </div>
+  <div class="image_carousel">
+    <ul id="carousel"></ul>
+    <div class="clearfix"></div>
+    <div id="carousel-buttons">
+      <a class="prev custom-button" href="#" id="art-prev">prev</a>
+      <a class="next custom-button" href="#" id="art-next">next</a>
+    </div>
+  </div>
+</script>
+
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
+<script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
+<script>
   var artObjects = <%= art_objects(@arts).to_json.html_safe %>;
   var mapCenterLat = <%= @center_point[:lat] %>;
   var mapCenterLong = <%= @center_point[:long] %>;
   var zoomLevel = <%= @zoom_level %>;
-  var markers = []
+  var map = L.mapbox.map('map', 'examples.map-9ijuk24y', {zoomControl: false})
+      .setView([mapCenterLat, mapCenterLong], zoomLevel)
+  var zoomControls = new L.Control.Zoom({position: 'topright'}).addTo(map);
+  var geoCoderControls = new L.mapbox.geocoderControl('examples.map-9ijuk24y', {position: 'topright'}).addTo(map);
+  var featureGroup = L.featureGroup().addTo(map);
+  var drawControl = new L.Control.Draw({
+      position: 'topright',
+      edit: {
+        featureGroup: featureGroup
+      }
+    }).addTo(map);
 
-  var map = L.mapbox.map('map', 'examples.map-9ijuk24y')
-      .setView([mapCenterLat, mapCenterLong], zoomLevel);
-
-  var addToMap = function(art) {
-    var marker = L.mapbox.markerLayer({
-        type: 'Feature',
-        geometry: {
-            type: 'Point',
-            coordinates: [parseFloat(art["long"]), parseFloat(art["lat"])]
-        },
-        properties: {
-            'marker-size': 'large',
-            'marker-color': '#008CFF',
-        }
-      });
-      markers.push(marker);
-      marker.addTo(map);
-  }
+    map.on('draw:created', function(e) {
+        featureGroup.addLayer(e.layer);
+    });
+  var markers = new L.MarkerClusterGroup();
 
   for (var i = 0; i < artObjects.length; i++) {
     var art = artObjects[i];
+    var marker = L.mapbox.markerLayer({
+      type: 'Feature',
+      geometry: {
+          type: 'Point',
+          coordinates: [parseFloat(art["long"]), parseFloat(art["lat"])]
+      },
+      properties: {
+          'marker-size': 'large',
+          'marker-color': '#008CFF',
+          'url': '#sidebar',
+          'art_id': art.id,
+          'art': art
+      }
+    });
 
-    addToMap(art);
+    marker.on('click', function(e){
+      $('.js-menu').removeClass('is-visible');
+      $('.js-menu').addClass('is-visible');
+      $('.js-menu-screen').removeClass('is-visible');
+      $('.js-menu-screen').addClass('is-visible');
+      populateSideBar(e.layer.feature.properties['art_id']);
+    });
+    markers.addLayer(marker);
   }
-
-
+  map.addLayer(markers);
 </script>

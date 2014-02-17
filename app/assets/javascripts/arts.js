@@ -11,7 +11,7 @@ $('#go-to-address').on('click', function() {
 });
 
 var populateSideBar = function(art_id) {
-  $('.side-nav').empty();
+  $('.side-content').empty();
 
   var url = '/arts/'+ art_id + '.json';
   $.getJSON(url, function(data) {
@@ -25,7 +25,7 @@ var populateSideBar = function(art_id) {
     var context = { art: {id: art.id, title: art.title, artist: art.artist ,comment: art.comment } };
 
     var html = template(context);
-    $('.side-nav').append(html);
+    $('.side-content').append(html);
     $('ul#carousel').append(imageTags);
 
     $("#carousel").carouFredSel(

@@ -11,7 +11,7 @@ header.navigation {
   min-height: $navigation-height;
   background-color: $navigation-background;
   border-bottom: 1px solid $dark-gray;
-  z-index: 999;
+  z-index: 999999;
 
   .menu-wrapper {
     @include outer-container;
