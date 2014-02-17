@@ -19,7 +19,7 @@ $sliding-menu-color-hover: #fff;
  @include transform(translateX(-285px));
  @include transition(all .25s linear);
  background: $sliding-menu-background;
- z-index: 99;
+ z-index: 9999;
 
   li a {
     border-bottom: $sliding-menu-border;
