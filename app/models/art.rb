@@ -1,6 +1,4 @@
 class Art < ActiveRecord::Base
-  attr_accessible :artist, :comment, :title, :location_attributes, :image_attributes, :image
-
   has_one :location
   has_many :images
 

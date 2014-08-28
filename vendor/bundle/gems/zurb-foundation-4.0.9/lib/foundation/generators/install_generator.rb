@@ -29,7 +29,7 @@ module Foundation
         return ['.css', ' *='] if File.exist?('app/assets/stylesheets/application.css')
         return ['.css.sass', ' //='] if File.exist?('app/assets/stylesheets/application.css.sass')
         return ['.sass', ' //='] if File.exist?('app/assets/stylesheets/application.sass')
-        return ['.css.scss', ' //='] if File.exist?('app/assets/stylesheets/application.css.scss')
+        return ['.css.scss', ' //='] if File.exist?('app/assets/stylesheets/application.scss')
         return ['.scss', ' //='] if File.exist?('app/assets/stylesheets/application.scss')
       end
 

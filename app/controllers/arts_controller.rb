@@ -1,7 +1,7 @@
 class ArtsController < ApplicationController
 
   def index
-    @arts = Art.all
+    @arts ||= Art.all
     @art = Art.new
     @art.build_location
     @center_point = new_art_or_united_states_center_point
@@ -15,7 +15,7 @@ class ArtsController < ApplicationController
   end
 
   def create
-    @art = Art.create_art_with_location_and_image(params[:art])
+    @art = Art.create_art_with_location_and_image(permit_art_params)
 
     if @art.save
       flash.notice = "Thank you for contributing!"
@@ -31,6 +31,10 @@ class ArtsController < ApplicationController
   end
 
   private
+
+  def permit_art_params
+    params.require(:art).permit(:artist, :comment, :title, :location_attributes, :image_attributes, :image)
+  end
 
   def new_art_present?
     params[:new_art].present?

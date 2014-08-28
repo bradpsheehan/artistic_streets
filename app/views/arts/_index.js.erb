@@ -38,14 +38,17 @@
 <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
 <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-draw/v0.2.2/leaflet.draw.js'></script>
 <script>
+  L.mapbox.accessToken = 'pk.eyJ1IjoiYnJhZHBzaGVlaGFuIiwiYSI6IlhSYU8zcWcifQ.HNs7CuW_wsM8hxA3gJ5ZpQ';
+</script>
+<script>
   var artObjects = <%= art_objects(@arts).to_json.html_safe %>;
   var mapCenterLat = <%= @center_point[:lat] %>;
   var mapCenterLong = <%= @center_point[:long] %>;
   var zoomLevel = <%= @zoom_level %>;
-  var map = L.mapbox.map('map', 'examples.map-9ijuk24y', {zoomControl: false})
-      .setView([mapCenterLat, mapCenterLong], zoomLevel)
+  var map = L.mapbox.map('map', 'bradpsheehan.jbp1kgei', {zoomControl: false})
+      .setView([mapCenterLat, mapCenterLong], zoomLevel);
   var zoomControls = new L.Control.Zoom({position: 'topright'}).addTo(map);
-  var geoCoderControls = new L.mapbox.geocoderControl('examples.map-9ijuk24y', {position: 'topright'}).addTo(map);
+  var geoCoderControls = new L.mapbox.geocoderControl('bradpsheehan.jbp1kgei', {position: 'topright'}).addTo(map);
   var featureGroup = L.featureGroup().addTo(map);
   var drawControl = new L.Control.Draw({
       position: 'topright',
