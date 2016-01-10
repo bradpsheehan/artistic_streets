@@ -1,9 +1,14 @@
+$(document).ready(function(){
+    $('.js-menu-collapse').on('click', function () {
+        $('.js-menu').toggleClass('is-visible');
+    });
+});
+
 $('#address').keydown(function(event){
     if(event.keyCode==13){
        $('#go-to-address').trigger('click');
     }
 });
-
 $('#go-to-address').on('click', function() {
   var address = $('#address').val();
   centerMap(address);
@@ -22,7 +27,7 @@ var populateSideBar = function(art_id) {
 
     var source   = $("#sidebar-template").html();
     var template = Handlebars.compile(source);
-    var context = { art: {id: art.id, title: art.title, artist: art.artist ,comment: art.comment } };
+    var context = { art: {id: art.id} };
 
     var html = template(context);
     $('.side-content').append(html);

@@ -13,7 +13,7 @@ describe Thor::Actions::CreateLink do
     @base = MyCounter.new([1,2], options, { :destination_root => destination_root })
     @base.stub!(:file_name).and_return('rdoc')
 
-    @tempfile = Tempfile.new("config.rb")
+    @tempfile = Tempfile.new("unicorn.rb")
 
     @action = Thor::Actions::CreateLink.new(@base, destination, @tempfile.path,
                                             { :verbose => !@silence }.merge(config))
@@ -33,9 +33,9 @@ describe Thor::Actions::CreateLink do
 
   describe "#invoke!" do
     it "creates a symbolic link for :symbolic => true" do
-      create_link("doc/config.rb", :symbolic => true)
+      create_link("doc/unicorn.rb", :symbolic => true)
       invoke!
-      destination_path = File.join(destination_root, "doc/config.rb")
+      destination_path = File.join(destination_root, "doc/unicorn.rb")
       expect(File.exists?(destination_path)).to be_true
       expect(File.symlink?(destination_path)).to be_true
     end
@@ -49,34 +49,34 @@ describe Thor::Actions::CreateLink do
     end
 
     it "creates a symbolic link by default" do
-      create_link("doc/config.rb")
+      create_link("doc/unicorn.rb")
       invoke!
-      destination_path = File.join(destination_root, "doc/config.rb")
+      destination_path = File.join(destination_root, "doc/unicorn.rb")
       expect(File.exists?(destination_path)).to be_true
       expect(File.symlink?(destination_path)).to be_true
     end
 
     it "does not create a link if pretending" do
-      create_link("doc/config.rb", {}, :pretend => true)
+      create_link("doc/unicorn.rb", {}, :pretend => true)
       invoke!
-      expect(File.exists?(File.join(destination_root, "doc/config.rb"))).to be_false
+      expect(File.exists?(File.join(destination_root, "doc/unicorn.rb"))).to be_false
     end
 
     it "shows created status to the user" do
-      create_link("doc/config.rb")
-      expect(invoke!).to eq("      create  doc/config.rb\n")
+      create_link("doc/unicorn.rb")
+      expect(invoke!).to eq("      create  doc/unicorn.rb\n")
     end
 
     it "does not show any information if log status is false" do
       silence!
-      create_link("doc/config.rb")
+      create_link("doc/unicorn.rb")
       expect(invoke!).to be_empty
     end
   end
 
   describe "#identical?" do
     it "returns true if the destination link exists and is identical" do
-      create_link("doc/config.rb")
+      create_link("doc/unicorn.rb")
       expect(@action.identical?).to be_false
       invoke!
       expect(@action.identical?).to be_true
@@ -85,7 +85,7 @@ describe Thor::Actions::CreateLink do
 
   describe "#revoke!" do
     it "removes the symbolic link of non-existent destination" do
-      create_link("doc/config.rb")
+      create_link("doc/unicorn.rb")
       invoke!
       File.delete(@tempfile.path)
       revoke!

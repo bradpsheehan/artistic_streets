@@ -76,14 +76,14 @@
 
   .modal-inner {
     @include transition(opacity .25s ease);
-    border-radius: $base-border-radius;
+    border-radius: $radius;
     background: $modal-background;
     margin: auto;
     max-height: 95%;
     position: relative;
     overflow: auto;
     width: 95%;
-    padding: $modal-padding /2;
+    padding: $modal-padding;
     margin-top: .6em;
 
     @include media($medium-screen) {
@@ -146,4 +146,8 @@
   .modal-state:checked + .modal-window .modal-inner {
     top: 0;
   }
+}
+
+.modal-open {
+  overflow: hidden;
 }

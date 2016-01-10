@@ -165,14 +165,14 @@ describe Thor::Actions do
 
     it "evaluates the template given as source" do
       runner.instance_variable_set("@klass", "Config")
-      action :template, "doc/config.rb"
+      action :template, "doc/unicorn.rb"
 
-      file = File.join(destination_root, "doc/config.rb")
+      file = File.join(destination_root, "doc/unicorn.rb")
       expect(File.read(file)).to eq("class Config; end\n")
     end
 
     it "copies the template to the specified destination" do
-      action :template, "doc/config.rb", "doc/configuration.rb"
+      action :template, "doc/unicorn.rb", "doc/configuration.rb"
       file = File.join(destination_root, "doc/configuration.rb")
       expect(File.exists?(file)).to be_true
     end
@@ -185,14 +185,14 @@ describe Thor::Actions do
     end
 
     it "logs status" do
-      expect(capture(:stdout) { runner.template("doc/config.rb") }).to eq("      create  doc/config.rb\n")
+      expect(capture(:stdout) { runner.template("doc/unicorn.rb") }).to eq("      create  doc/unicorn.rb\n")
     end
 
     it "accepts a block to change output" do
-      action :template, "doc/config.rb" do |content|
+      action :template, "doc/unicorn.rb" do |content|
         "OMG" + content
       end
-      expect(File.read(File.join(destination_root, "doc/config.rb"))).to match(/^OMG/)
+      expect(File.read(File.join(destination_root, "doc/unicorn.rb"))).to match(/^OMG/)
     end
 
     it "guesses the destination name when given only a source" do

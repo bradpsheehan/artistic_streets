@@ -1,5 +1,9 @@
 <header class="navigation">
   <div class="menu-wrapper">
+    <div class="logo">
+      <%= link_to 'ARTISTIC STREETS', root_path %>
+    </div>
+    <p id="js-mobile-menu"><span class="icon-menu"></span></p>
     <ul class="nav nav-button" id="navigation-menu">
       <li>
         <%= link_to t('nav.map'), arts_path %>
@@ -8,12 +12,12 @@
         <%= link_to t('nav.gallery'), gallery_path %>
       </li>
       <li>
+        <a>
+          <label for="modal-1">
+            <%= t('nav.contribute') %>
+          </label>
+        </a>
         <div class="modal">
-          <a>
-            <label for="modal-1">
-              <%= t('nav.contribute') %>
-            </label>
-          </a>
           <input class="modal-state" id="modal-1" type="checkbox" />
           <div class="modal-window">
             <div class="modal-inner">
@@ -24,9 +28,5 @@
         </div>
       </li>
     </ul>
-    <div class="logo">
-      <%= link_to 'ARTISTIC STREETS', root_path %>
-    </div>
-    <p id="js-mobile-menu"><span class="icon-menu"></span></p>
   </div>
 </header>

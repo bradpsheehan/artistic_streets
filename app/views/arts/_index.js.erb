@@ -1,38 +1,28 @@
 <div id="map"></div>
 
-<nav class="js-menu sliding-menu-content" id="sidebar">
-  <div class="side-content"></div>
-</nav>
+<div class="js-menu sliding-menu-content" id="sidebar">
+    <div class="js-menu-collapse">X</div>
+    <div class="side-content"></div>
+</div>
 
 <script id="sidebar-template" type="text/x-handlebars-template">
-  <h4>
-    <em><%= t('headings.art_title') %></em>
-    {{ art.title }}
-  </h4>
-  <h5>
-    <em><%= t('headings.art_artist') %></em>
-    {{ art.artist }}
-  </h5>
-  <p id="art-comment">
-    <em><%= t('headings.art_comment') %></em>
-    {{ art.comment }}
-  </p>
-  <div id="add-photo-form">
-    <h5><%= t('headings.add_photo') %></h5>
-    <form action="/images" enctype="multipart/form-data" method="post">
-      <input id="add-photo-image" name="image" type="file"></input>
-      <input id="add-photo-artid" name="art_id" type="hidden" value="{{ art.id }}"></input>
-      <input id="add-photo" type="submit"></input>
-    </form>
-  </div>
-  <div class="image_carousel">
-    <ul id="carousel"></ul>
-    <div class="clearfix"></div>
-    <div id="carousel-buttons">
-      <a class="prev custom-button" href="#" id="art-prev">prev</a>
-      <a class="next custom-button" href="#" id="art-next">next</a>
+    <div class="image_carousel">
+        <ul id="carousel"></ul>
+        <div class="clearfix"></div>
+        <div id="carousel-buttons">
+          <a class="prev custom-button" href="#" id="art-prev">prev</a>
+          <a class="next custom-button" href="#" id="art-next">next</a>
+        </div>
     </div>
-  </div>
+
+    <div id="add-photo-form">
+        <h5><%= t('headings.add_photo') %></h5>
+        <form action="/images" enctype="multipart/form-data" method="post">
+            <input id="add-photo-image" name="image" type="file"></input>
+            <input id="add-photo-artid" name="art_id" type="hidden" value="{{ art.id }}"></input>
+            <input id="add-photo" type="submit"></input>
+        </form>
+    </div>
 </script>
 
 <script src='//api.tiles.mapbox.com/mapbox.js/plugins/leaflet-markercluster/v0.4.0/leaflet.markercluster.js'></script>
@@ -80,10 +70,7 @@
     });
 
     marker.on('click', function(e){
-      $('.js-menu').removeClass('is-visible');
-      $('.js-menu').addClass('is-visible');
-      $('.js-menu-screen').removeClass('is-visible');
-      $('.js-menu-screen').addClass('is-visible');
+      $('.js-menu').removeClass('is-visible').addClass('is-visible');
       populateSideBar(e.layer.feature.properties['art_id']);
     });
     markers.addLayer(marker);

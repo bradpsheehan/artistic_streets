@@ -17,3 +17,4 @@
 //= require map
 //= require jquery.offcanvas.js
 //= require arts.js
+//= require keystrokes

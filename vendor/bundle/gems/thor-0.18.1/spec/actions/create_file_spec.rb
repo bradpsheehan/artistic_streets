@@ -28,31 +28,31 @@ describe Thor::Actions::CreateFile do
 
   describe "#invoke!" do
     it "creates a file" do
-      create_file("doc/config.rb")
+      create_file("doc/unicorn.rb")
       invoke!
-      expect(File.exists?(File.join(destination_root, "doc/config.rb"))).to be_true
+      expect(File.exists?(File.join(destination_root, "doc/unicorn.rb"))).to be_true
     end
 
     it "does not create a file if pretending" do
-      create_file("doc/config.rb", {}, :pretend => true)
+      create_file("doc/unicorn.rb", {}, :pretend => true)
       invoke!
-      expect(File.exists?(File.join(destination_root, "doc/config.rb"))).to be_false
+      expect(File.exists?(File.join(destination_root, "doc/unicorn.rb"))).to be_false
     end
 
     it "shows created status to the user" do
-      create_file("doc/config.rb")
-      expect(invoke!).to eq("      create  doc/config.rb\n")
+      create_file("doc/unicorn.rb")
+      expect(invoke!).to eq("      create  doc/unicorn.rb\n")
     end
 
     it "does not show any information if log status is false" do
       silence!
-      create_file("doc/config.rb")
+      create_file("doc/unicorn.rb")
       expect(invoke!).to be_empty
     end
 
     it "returns the given destination" do
       capture(:stdout) do
-        expect(create_file("doc/config.rb").invoke!).to eq("doc/config.rb")
+        expect(create_file("doc/unicorn.rb").invoke!).to eq("doc/unicorn.rb")
       end
     end
 
@@ -64,47 +64,47 @@ describe Thor::Actions::CreateFile do
 
     describe "when file exists" do
       before do
-        create_file("doc/config.rb")
+        create_file("doc/unicorn.rb")
         invoke!
       end
 
       describe "and is identical" do
         it "shows identical status" do
-          create_file("doc/config.rb")
+          create_file("doc/unicorn.rb")
           invoke!
-          expect(invoke!).to eq("   identical  doc/config.rb\n")
+          expect(invoke!).to eq("   identical  doc/unicorn.rb\n")
         end
       end
 
       describe "and is not identical" do
         before do
-          File.open(File.join(destination_root, 'doc/config.rb'), 'w'){ |f| f.write("FOO = 3") }
+          File.open(File.join(destination_root, 'doc/unicorn.rb'), 'w'){ |f| f.write("FOO = 3") }
         end
 
         it "shows forced status to the user if force is given" do
-          expect(create_file("doc/config.rb", {}, :force => true)).not_to be_identical
-          expect(invoke!).to eq("       force  doc/config.rb\n")
+          expect(create_file("doc/unicorn.rb", {}, :force => true)).not_to be_identical
+          expect(invoke!).to eq("       force  doc/unicorn.rb\n")
         end
 
         it "shows skipped status to the user if skip is given" do
-          expect(create_file("doc/config.rb", {}, :skip => true)).not_to be_identical
-          expect(invoke!).to eq("        skip  doc/config.rb\n")
+          expect(create_file("doc/unicorn.rb", {}, :skip => true)).not_to be_identical
+          expect(invoke!).to eq("        skip  doc/unicorn.rb\n")
         end
 
         it "shows forced status to the user if force is configured" do
-          expect(create_file("doc/config.rb", :force => true)).not_to be_identical
-          expect(invoke!).to eq("       force  doc/config.rb\n")
+          expect(create_file("doc/unicorn.rb", :force => true)).not_to be_identical
+          expect(invoke!).to eq("       force  doc/unicorn.rb\n")
         end
 
         it "shows skipped status to the user if skip is configured" do
-          expect(create_file("doc/config.rb", :skip => true)).not_to be_identical
-          expect(invoke!).to eq("        skip  doc/config.rb\n")
+          expect(create_file("doc/unicorn.rb", :skip => true)).not_to be_identical
+          expect(invoke!).to eq("        skip  doc/unicorn.rb\n")
         end
 
         it "shows conflict status to ther user" do
-          expect(create_file("doc/config.rb")).not_to be_identical
+          expect(create_file("doc/unicorn.rb")).not_to be_identical
           $stdin.should_receive(:gets).and_return('s')
-          file = File.join(destination_root, 'doc/config.rb')
+          file = File.join(destination_root, 'doc/unicorn.rb')
 
           content = invoke!
           expect(content).to match(/conflict  doc\/config\.rb/)
@@ -113,19 +113,19 @@ describe Thor::Actions::CreateFile do
         end
 
         it "creates the file if the file collision menu returns true" do
-          create_file("doc/config.rb")
+          create_file("doc/unicorn.rb")
           $stdin.should_receive(:gets).and_return('y')
           expect(invoke!).to match(/force  doc\/config\.rb/)
         end
 
         it "skips the file if the file collision menu returns false" do
-          create_file("doc/config.rb")
+          create_file("doc/unicorn.rb")
           $stdin.should_receive(:gets).and_return('n')
           expect(invoke!).to match(/skip  doc\/config\.rb/)
         end
 
         it "executes the block given to show file content" do
-          create_file("doc/config.rb")
+          create_file("doc/unicorn.rb")
           $stdin.should_receive(:gets).and_return('d')
           $stdin.should_receive(:gets).and_return('n')
           @base.shell.should_receive(:system).with(/diff -u/)
@@ -137,14 +137,14 @@ describe Thor::Actions::CreateFile do
 
   describe "#revoke!" do
     it "removes the destination file" do
-      create_file("doc/config.rb")
+      create_file("doc/unicorn.rb")
       invoke!
       revoke!
       expect(File.exists?(@action.destination)).to be_false
     end
 
     it "does not raise an error if the file does not exist" do
-      create_file("doc/config.rb")
+      create_file("doc/unicorn.rb")
       revoke!
       expect(File.exists?(@action.destination)).to be_false
     end
@@ -152,7 +152,7 @@ describe Thor::Actions::CreateFile do
 
   describe "#exists?" do
     it "returns true if the destination file exists" do
-      create_file("doc/config.rb")
+      create_file("doc/unicorn.rb")
       expect(@action.exists?).to be_false
       invoke!
       expect(@action.exists?).to be_true
@@ -161,7 +161,7 @@ describe Thor::Actions::CreateFile do
 
   describe "#identical?" do
     it "returns true if the destination file and is identical" do
-      create_file("doc/config.rb")
+      create_file("doc/unicorn.rb")
       expect(@action.identical?).to be_false
       invoke!
       expect(@action.identical?).to be_true

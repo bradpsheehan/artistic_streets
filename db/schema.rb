@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20130709220814) do
     t.string   "title"
     t.string   "artist"
     t.text     "comment"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "images", force: true do |t|
@@ -30,16 +30,18 @@ ActiveRecord::Schema.define(version: 20130709220814) do
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "art_id"
-    t.datetime "created_at",         null: false
-    t.datetime "updated_at",         null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
+
+  add_index "images", ["art_id"], name: "index_images_on_art_id", using: :btree
 
   create_table "locations", force: true do |t|
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "art_id"
   end
 
