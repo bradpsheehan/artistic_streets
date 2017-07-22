@@ -1,0 +1,26 @@
+<div class="row">
+  <div class="small-11 large-centered columns">
+    <%= form_for(@art, html: {multipart: true}) do |f| %>
+        <div class="control-group">
+          <%= f.text_field :title, placeholder: "#{t('placeholders.art_title')}" %>
+        </div>
+        <div class="control-group">
+          <%= f.text_field :artist, placeholder:"#{t('placeholders.artist_name')}" %>
+        </div>
+        <%= f.fields_for :location do |p| %>
+            <div class="control-group">
+              <%= p.text_field :address, placeholder: "#{t('placeholders.address')}" %>
+            </div>
+        <% end %>
+        <%= f.fields_for :images do |i| %>
+            <div class="control-group">
+              <%= i.label :image, "#{t('placeholders.image')}" %>
+              <%= i.file_field :image %>
+            </div>
+        <% end %>
+        <br/>
+        <br/>
+        <%= f.submit "#{t('buttons.submit')}", class:"custom-button" %>
+    <% end %>
+  </div>
+</div>

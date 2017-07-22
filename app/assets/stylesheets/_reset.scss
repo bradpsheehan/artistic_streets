@@ -1,0 +1,11 @@
+body, ul, li, input, h1, h2, h3, h4, h5, h6, p, a, th {
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+ul {
+  li {
+    list-style: none;
+  }
+}

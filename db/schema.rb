@@ -9,34 +9,39 @@
 # from scratch. The latter is a flawed and unsustainable approach (the more migrations
 # you'll amass, the slower it'll run and the greater likelihood for issues).
 #
-# It's strongly recommended to check this file into your version control system.
+# It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130709220814) do
+ActiveRecord::Schema.define(version: 20130709220814) do
 
-  create_table "arts", :force => true do |t|
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
+  create_table "arts", force: true do |t|
     t.string   "title"
     t.string   "artist"
     t.text     "comment"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "images", :force => true do |t|
+  create_table "images", force: true do |t|
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
     t.datetime "image_updated_at"
     t.integer  "art_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
-  create_table "locations", :force => true do |t|
+  add_index "images", ["art_id"], name: "index_images_on_art_id", using: :btree
+
+  create_table "locations", force: true do |t|
     t.string   "address"
     t.float    "latitude"
     t.float    "longitude"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
     t.integer  "art_id"
   end
 

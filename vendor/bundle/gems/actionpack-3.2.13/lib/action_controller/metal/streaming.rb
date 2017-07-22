@@ -179,12 +179,12 @@ module ActionController #:nodoc:
   # Unicorn supports streaming but it needs to be configured. For this, you
   # need to create a config file as follow:
   #
-  #   # unicorn.config.rb
+  #   # unicorn.unicorn.rb
   #   listen 3000, :tcp_nopush => false
   #
   # And use it on initialization:
   #
-  #   unicorn_rails --config-file unicorn.config.rb
+  #   unicorn_rails --config-file unicorn.unicorn.rb
   #
   # You may also want to configure other parameters like <tt>:tcp_nodelay</tt>.
   # Please check its documentation for more information: http://unicorn.bogomips.org/Unicorn/Configurator.html#method-i-listen

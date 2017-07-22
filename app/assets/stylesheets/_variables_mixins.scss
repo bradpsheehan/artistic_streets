@@ -1,0 +1,48 @@
+$blue: #28588E;
+$light-blue: lighten(desaturate($blue, 40), 52);
+$background-color: #DDDDDA;
+$orange: #f99e1b;
+$landing-color: darken($blue, 10);
+$dockets-color: saturate(lighten($blue, 18), 10);
+$docket-stats: #928F8F;
+$base-background-color: white;
+$light-gray: lightgray;
+$base-font-color: #4d4d4d;
+$base-link-color: $blue;
+$blue: #224A81;
+$border-color: darken(#DEE1E3, 10);
+$table-stripe-color: lighten(desaturate($blue, 40), 63);
+$table-header-color: #D3D3D3;
+$gradient-top-color: white;
+$gradient-bottom-color: darken(saturate($table-stripe-color, 5), 2);
+$bar-color: lighten($background-color, 6);
+$dark-gray: #333333;
+$navigation-color: #2AE222;
+$base-accent-color: #477dca;
+$as-green: #2AE222;
+
+
+$serif: georgia;
+$sans-serif: 'Open Sans', sans-serif;
+$base-font-size: 15px;
+$base-line-height: 21px;
+
+$radius: 3px;
+$textarea-border-size: 1px;
+$padding: 15px;
+$padding-controls: 8px;
+$input-color: lighten($blue, 63);
+$form-border-color: lighten($border-color, 1);
+$form-border-color-hover: darken($border-color, 10%);
+$form-border-color-focus: $blue; //blue default
+$form-border-radius: 3px;
+$form-box-shadow: inset 0 1px 3px hsla(0, 0%, 0%, 0.08), 0 1px 1px white;
+$form-box-shadow-focus: $form-box-shadow, 0 0 5px rgba(darken($form-border-color-focus, 5%), 0.7);
+$form-font-size: $base-font-size;
+$form-font-family: $sans-serif;
+$form-width: 100%;
+
+
+@mixin form-bottom-highlight {
+  box-shadow: 0 1px 1px white;
+}

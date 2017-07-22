@@ -1,0 +1,25 @@
+.leaflet-control-mapbox-geocoder .leaflet-control-mapbox-geocoder-wrap {
+	background: #fff;
+	position: absolute;
+	border: 1px solid #999;
+	border-color: rgba(0,0,0,0.4);
+	border-bottom-width: 0;
+	overflow: hidden;
+	left: -180px;
+	height: 27px;
+	width: 0;
+	top: -1px;
+	border-radius: 3px 0px 0px 3px;
+	opacity: 0;
+	-webkit-transition: opacity 100ms;
+	-moz-transition: opacity 100ms;
+	-o-transition: opacity 100ms;
+	transition: opacity 100ms;
+}
+.leaflet-control-mapbox-geocoder-results {
+	width: 180px;
+	position: absolute;
+	left: -180px;
+	top: 25px;
+	border-radius: 0 0 3px 3px;
+}

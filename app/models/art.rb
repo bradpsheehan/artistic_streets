@@ -1,6 +1,4 @@
 class Art < ActiveRecord::Base
-  attr_accessible :artist, :comment, :title, :location_attributes, :image_attributes, :image
-
   has_one :location
   has_many :images
 
@@ -26,22 +24,8 @@ class Art < ActiveRecord::Base
 
   def image_urls
     images = self.images.collect { |image| image.url(:medium) }
-
     images << MISSING_IMAGE_URL if images.empty?
     images
   end
 
-  def self.create_art_with_location_and_image(params)
-    art = Art.new(
-                  title: params[:title],
-                  artist: params[:artist],
-                  comment: params[:comment]
-                )
-    art.build_location(params[:location_attributes])
-    unless params[:image] ==  nil
-     art.images.new(params[:image])
-    end
-    art.save
-    art
-  end
 end

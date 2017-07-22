@@ -1,0 +1,265 @@
+fieldset {
+  background: #f1f1f1;
+  border: 1px solid lighten($border-color, 20%);
+  margin: 0 0 $base-line-height 0;
+  padding: $base-line-height $base-line-height ($base-line-height * .75) $base-line-height;
+}
+
+input,
+label,
+select {
+  font-family: $form-font-family;
+}
+
+%text-inputs {
+  background-color: $input-color;
+  border: $textarea-border-size solid $form-border-color;
+  border-radius: $radius;
+  box-shadow: $form-box-shadow;
+  @include box-sizing(border-box);
+  font-family: $form-font-family;
+  font-size: $base-font-size;
+  font-style: normal;
+  padding: $padding-controls;
+  @include transition(border-color);
+  width: $form-width;
+  color: $base-font-color;
+}
+
+textarea,
+input[type="text"],
+#{$all-text-inputs} {
+  @extend %text-inputs;
+
+  &:hover {
+    border-color: $form-border-color-hover;
+  }
+
+  &:focus {
+    border-color: $form-border-color-focus;
+    font-style: normal;
+    box-shadow: $form-box-shadow-focus;
+    outline: none;
+  }
+}
+
+input[type="search"] {
+  @include appearance(none);
+}
+
+select {
+  width: $form-width;
+  background: transparent;
+  opacity: 1;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  cursor: pointer;
+  margin-top: 0;
+
+  color: $base-font-color;
+  font-family: $form-font-family;
+  font-size: $base-font-size;
+  padding: $padding-controls;
+  background-color: $input-color;
+  border: $textarea-border-size solid $form-border-color;
+  border-radius: $radius;
+}
+
+// Buttons
+///////////////////////////////////////////////////////////////////////////////
+
+button,
+.button,
+input[type="submit"] {
+  background-color: lighten($light-blue, 5);
+  box-shadow: 0 1px 1px 0px transparentize(white, 0.6), inset 0 1px 1px 0 white;
+  cursor: pointer;
+  font-size: $base-font-size;
+  padding: $padding-controls + 1px; // WHY DO WE NEED +1px TO HAVE THE SAME HEIGHT AS THE TEXTAREAS?
+  display: inline-block;
+  border-radius: $radius;
+  border: solid 1px $border-color;
+  margin: 0;
+  outline: 0;
+  font-weight: 600;
+
+  &:hover {
+    color: $base-font-color;
+    background-color: lighten($light-blue, 3);
+  }
+
+  &:active {
+    background-color: darken($light-blue, 3);
+  }
+}
+
+.bar-button {
+  @extend .button;
+  background-color: $bar-color;
+  border: 1px solid $form-border-color;
+  vertical-align: middle;
+
+  &:hover {
+    background-color: lighten($bar-color, 3);
+  }
+  &:active {
+    background-color: darken($bar-color, 3);
+  }
+}
+
+.button-group {
+  display: inline;
+  float: right;
+  button {
+    margin: 0;
+    float: left;
+  }
+
+  button:first-child {
+    border-right: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+  }
+
+  button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    margin-right: 0;
+  }
+}
+
+
+@mixin linear-gradient($pos, $G1, $G2: null,
+$G3: null, $G4: null,
+$G5: null, $G6: null,
+$G7: null, $G8: null,
+$G9: null, $G10: null,
+$fallback: null) {
+  // Detect what type of value exists in $pos
+  $pos-type: type-of(nth($pos, 1));
+  $pos-spec: null;
+  $pos-degree: null;
+
+  // If $pos is missing from mixin, reassign vars and add default position
+  @if ($pos-type == color) or (nth($pos, 1) == "transparent")  {
+    $G10: $G9; $G9: $G8; $G8: $G7; $G7: $G6; $G6: $G5;
+    $G5: $G4; $G4: $G3; $G3: $G2; $G2: $G1; $G1: $pos;
+    $pos: null;
+  }
+
+  @if $pos {
+    $positions: _linear-positions-parser($pos);
+    $pos-degree: nth($positions, 1);
+    $pos-spec:   nth($positions, 2);
+  }
+
+  $full: $G1, $G2, $G3, $G4, $G5, $G6, $G7, $G8, $G9, $G10;
+
+  // Set $G1 as the default fallback color
+  $fallback-color: nth($G1, 1);
+
+  // If $fallback is a color use that color as the fallback color
+  @if (type-of($fallback) == color) or ($fallback == "transparent") {
+    $fallback-color: $fallback;
+  }
+
+  background-color: $fallback-color;
+  background-image: -webkit-linear-gradient($pos-degree $full); // Safari 5.1+, Chrome
+  background-image: unquote("linear-gradient(#{$pos-spec}#{$full})");
+}
+
+
+table {
+  button,
+  input[type="submit"] {
+    @extend button;
+    width: 100%;
+    @include linear-gradient(#fff, lighten($gradient-bottom-color, 5));
+    box-shadow: 0 1px 2px white;
+
+    &:hover {
+      color: $base-link-color;
+      @include linear-gradient(#fff, lighten(#E9EBED, 1));
+    }
+
+    &:active {
+      color: $base-link-color;
+      @include linear-gradient(darken(#fff, 3), #E9EBED);
+      box-shadow: inset 0 1px 2px #E5E7E7;
+    }
+  }
+}
+
+// Switch
+///////////////////////////////////////////////////////////////////////////////
+
+.onoffswitch {
+  position: relative;
+  @include form-bottom-highlight;
+  width: 70px;
+  -webkit-user-select:none;
+  -moz-user-select:none;
+  -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+  display: none;
+}
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid $border-color;
+  border-radius: 3px;
+}
+
+.onoffswitch-inner {
+  font-weight: bold;
+  font-size: $base-font-size;
+  width: 200%;
+  margin-left: -100%;
+  @include transition (margin 0.3s ease-in 0s);
+}
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  float: left;
+  width: 50%;
+  line-height: 20px;
+  color: white;
+  @include box-sizing(border-box);
+}
+.onoffswitch-inner:before {
+  content: "ON";
+  background-color: $blue;
+  color: #FFFFFF;
+  padding: .2em .2em .2em .3em;
+}
+.onoffswitch-inner:after {
+  content: "OFF";
+  background-color: $input-color;
+  color: #999999;
+  text-align: right;
+  padding: .2em .3em;
+}
+.onoffswitch-switch {
+  width: 30px; margin: 2px;
+  @include linear-gradient(lighten($background-color, 7), lighten($background-color, 13));
+  border: 1px solid $border-color;
+  box-shadow: inset 0 1px 0 white, 0 3px 2px transparentize(black, 0.8);
+  border-radius: 2px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 36px;
+  -moz-transition: all 0.3s ease-in 0s; -webkit-transition: all 0.3s ease-in 0s;
+  -o-transition: all 0.3s ease-in 0s; transition: all 0.3s ease-in 0s;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
+
+.control-group {
+  padding: $padding 0;
+}

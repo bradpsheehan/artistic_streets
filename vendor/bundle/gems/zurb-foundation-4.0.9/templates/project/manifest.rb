@@ -49,6 +49,6 @@ w00t! You're using ZURB Foundation, now go forth and rock 'n roll!
 
 }
 
-# file 'config.rb'
+# file 'unicorn.rb'
 
 # no_configuration_file!

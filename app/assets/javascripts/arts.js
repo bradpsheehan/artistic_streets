@@ -1,9 +1,14 @@
+$(document).ready(function(){
+    $('.js-menu-collapse').on('click', function () {
+        $('.js-menu').toggleClass('is-visible');
+    });
+});
+
 $('#address').keydown(function(event){
     if(event.keyCode==13){
        $('#go-to-address').trigger('click');
     }
 });
-
 $('#go-to-address').on('click', function() {
   var address = $('#address').val();
   centerMap(address);
@@ -11,7 +16,7 @@ $('#go-to-address').on('click', function() {
 });
 
 var populateSideBar = function(art_id) {
-  $('.side-nav').empty();
+  $('.side-content').empty();
 
   var url = '/arts/'+ art_id + '.json';
   $.getJSON(url, function(data) {
@@ -22,10 +27,10 @@ var populateSideBar = function(art_id) {
 
     var source   = $("#sidebar-template").html();
     var template = Handlebars.compile(source);
-    var context = { art: {id: art.id, title: art.title, artist: art.artist ,comment: art.comment } };
+    var context = { art: {id: art.id} };
 
     var html = template(context);
-    $('.side-nav').append(html);
+    $('.side-content').append(html);
     $('ul#carousel').append(imageTags);
 
     $("#carousel").carouFredSel(
