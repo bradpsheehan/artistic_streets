@@ -14,7 +14,7 @@ header.navigation {
   z-index: 999999;
 
   .menu-wrapper {
-    @include outer-container;
+    @include grid-container;
   }
 
   .logo {
@@ -32,7 +32,7 @@ header.navigation {
       font-family: sans-serif;
     }
 
-    @include media($medium-screen) {
+    @media(min-width: $medium-screen) {
       padding-left: 1em;
     }
   }
@@ -126,7 +126,7 @@ header.navigation {
     }
   }
 
-  @include media($small-screen) {
+  @media(min-width: $small-screen) {
     p {
       display: none;
     }

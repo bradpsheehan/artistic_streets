@@ -1,10 +1,10 @@
-ruby '2.1.4'
+ruby '2.4.0'
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.7'
+gem 'rails', '~> 5.1.3.rc1'
 
 gem 'jquery-rails'
-gem 'pg', '~> 0.17.1'
+gem 'pg', '~> 0.18.4'
 gem 'simple_form'
 gem 'unicorn'
 
@@ -14,7 +14,7 @@ gem 'aws-sdk'
 gem 'instagram'
 gem 'newrelic_rpm'
 
-gem 'sass-rails', '~> 4.0.3'
+gem 'sass-rails', '~> 5.0', '>= 5.0.6'
 gem 'bourbon'
 gem 'neat'
 gem 'coffee-rails'

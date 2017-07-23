@@ -86,14 +86,14 @@
     padding: $modal-padding;
     margin-top: .6em;
 
-    @include media($medium-screen) {
+    @media(min-width: $medium-screen) {
       padding: $modal-padding;
       width: 60%;
       max-height: 60%;
       margin-top: 10em;
     }
 
-    @include media($desktop) {
+    @media(min-width: $desktop) {
       width: 50%;
       margin-top: 10em;
     }
@@ -120,7 +120,7 @@
         color: $base-font-color;
         line-height: 1.45em;
 
-        @include media($medium-screen) {
+        @media(min-width: $medium-screen) {
           @include columns(2 8em);
         }
       }
